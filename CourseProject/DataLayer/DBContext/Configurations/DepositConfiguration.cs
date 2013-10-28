@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.ModelConfiguration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DataLayer.DomainClasses;
 
 namespace DataLayer.DBContext.Configurations
 {
-    internal class DepositConfiguration
+    internal class DepositConfiguration : EntityTypeConfiguration<Deposit>
     {
     }
 }

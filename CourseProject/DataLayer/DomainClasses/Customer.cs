@@ -16,7 +16,7 @@ namespace DataLayer.DomainClasses
         public string Address { get; set; }
         public int Age { get; set; }
         public string PassportData { get; set; }
-        public List<Account> Account { get; set; }
+        public List<Account> Accounts { get; set; }
         public List<Deposit> Deposits { get; set; }
     }
 }
