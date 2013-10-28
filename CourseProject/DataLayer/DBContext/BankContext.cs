@@ -15,5 +15,6 @@ namespace DataLayer.DBContext
         public DbSet<Customer> Customers { get; set; }
         public DbSet<History> Histories { get; set; }
         public DbSet<Currency> Currencies { get; set; }
+        public DbSet<OptionDeposit> OptionDeposits { get; set; }
     }
 }

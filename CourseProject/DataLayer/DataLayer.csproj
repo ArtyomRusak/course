@@ -52,11 +52,13 @@
     <Compile Include="DBContext\Configurations\CustomerConfiguration.cs" />
     <Compile Include="DBContext\Configurations\DepositConfiguration.cs" />
     <Compile Include="DBContext\Configurations\HistoryConfiguration.cs" />
+    <Compile Include="DBContext\Configurations\OptionDepositConfiguration.cs" />
     <Compile Include="DomainClasses\Account.cs" />
     <Compile Include="DomainClasses\Currency.cs" />
     <Compile Include="DomainClasses\Customer.cs" />
     <Compile Include="DomainClasses\Deposit.cs" />
     <Compile Include="DomainClasses\History.cs" />
+    <Compile Include="DomainClasses\OptionDeposit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
