@@ -46,7 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataManager.cs" />
     <Compile Include="DBContext\BankContext.cs" />
+    <Compile Include="DBContext\BankInitialization.cs" />
     <Compile Include="DBContext\Configurations\AccountConfiguration.cs" />
     <Compile Include="DBContext\Configurations\CurrencyConfiguration.cs" />
     <Compile Include="DBContext\Configurations\CustomerConfiguration.cs" />
