@@ -10,5 +10,9 @@ namespace DataLayer.DBContext.Configurations
 {
     internal class CurrencyConfiguration : EntityTypeConfiguration<Currency>
     {
+        public CurrencyConfiguration()
+        {
+            Property(e => e.Value).IsRequired();
+        }
     }
 }

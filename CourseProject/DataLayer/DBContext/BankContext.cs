@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DataLayer.DBContext.Configurations;
 using DataLayer.DomainClasses;
 
 namespace DataLayer.DBContext
@@ -16,5 +17,16 @@ namespace DataLayer.DBContext
         public DbSet<History> Histories { get; set; }
         public DbSet<Currency> Currencies { get; set; }
         public DbSet<OptionDeposit> OptionDeposits { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Configurations.Add(new AccountConfiguration());
+            modelBuilder.Configurations.Add(new CurrencyConfiguration());
+            modelBuilder.Configurations.Add(new CustomerConfiguration());
+            modelBuilder.Configurations.Add(new DepositConfiguration());
+            modelBuilder.Configurations.Add(new HistoryConfiguration());
+            modelBuilder.Configurations.Add(new OptionDepositConfiguration());
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }
