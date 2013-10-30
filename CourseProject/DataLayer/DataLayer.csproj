@@ -46,7 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataManager.cs" />
     <Compile Include="DBContext\BankContext.cs" />
     <Compile Include="DBContext\BankInitialization.cs" />
     <Compile Include="DBContext\Configurations\AccountConfiguration.cs" />
@@ -62,6 +61,17 @@
     <Compile Include="DomainClasses\History.cs" />
     <Compile Include="DomainClasses\OptionDeposit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\AccountRepository.cs" />
+    <Compile Include="Repositories\Contracts\IAccountRepository.cs" />
+    <Compile Include="Repositories\Contracts\ICurrencyRepository.cs" />
+    <Compile Include="Repositories\Contracts\IDepositRepository.cs" />
+    <Compile Include="Repositories\Contracts\IHistoryRepository.cs" />
+    <Compile Include="Repositories\Contracts\IOptionDepositRepository.cs" />
+    <Compile Include="Repositories\CurrencyRepository.cs" />
+    <Compile Include="Repositories\DepositRepository.cs" />
+    <Compile Include="Repositories\HistoryRepository.cs" />
+    <Compile Include="Repositories\OptionDepositRepository.cs" />
+    <Compile Include="Repositories\Service.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
