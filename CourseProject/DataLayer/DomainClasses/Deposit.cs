@@ -9,7 +9,8 @@ namespace DataLayer.DomainClasses
     public class Deposit
     {
         public int Id { get; set; }
-        public int Summary { get; set; }
+        public double Summary { get; set; }
+        public double OpeningSummary { get; set; }
         public Customer Customer { get; set; }
         public int CustomerId { get; set; }
         public Currency Currency { get; set; }

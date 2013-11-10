@@ -12,6 +12,7 @@ namespace DataLayer.DomainClasses
         {
             Accounts = new List<Account>();
             Deposits = new List<Deposit>();
+            Loans = new List<Loan>();
             Histories = new List<History>();
         }
 
@@ -25,6 +26,7 @@ namespace DataLayer.DomainClasses
         public string PassportData { get; set; }
         public List<Account> Accounts { get; set; }
         public List<Deposit> Deposits { get; set; }
+        public List<Loan> Loans { get; set; }
         public List<History> Histories { get; set; }
     }
 }

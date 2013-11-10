@@ -53,24 +53,34 @@
     <Compile Include="DBContext\Configurations\CustomerConfiguration.cs" />
     <Compile Include="DBContext\Configurations\DepositConfiguration.cs" />
     <Compile Include="DBContext\Configurations\HistoryConfiguration.cs" />
+    <Compile Include="DBContext\Configurations\LoanConfiguration.cs" />
     <Compile Include="DBContext\Configurations\OptionDepositConfiguration.cs" />
+    <Compile Include="DBContext\Configurations\OptionLoanConfiguration.cs" />
     <Compile Include="DomainClasses\Account.cs" />
     <Compile Include="DomainClasses\Currency.cs" />
     <Compile Include="DomainClasses\Customer.cs" />
     <Compile Include="DomainClasses\Deposit.cs" />
     <Compile Include="DomainClasses\History.cs" />
+    <Compile Include="DomainClasses\Loan.cs" />
     <Compile Include="DomainClasses\OptionDeposit.cs" />
+    <Compile Include="DomainClasses\OptionLoan.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AccountRepository.cs" />
     <Compile Include="Repositories\Contracts\IAccountRepository.cs" />
     <Compile Include="Repositories\Contracts\ICurrencyRepository.cs" />
+    <Compile Include="Repositories\Contracts\ICustomerRepository.cs" />
     <Compile Include="Repositories\Contracts\IDepositRepository.cs" />
     <Compile Include="Repositories\Contracts\IHistoryRepository.cs" />
+    <Compile Include="Repositories\Contracts\ILoanRepository.cs" />
     <Compile Include="Repositories\Contracts\IOptionDepositRepository.cs" />
+    <Compile Include="Repositories\Contracts\IOptionLoanRepository.cs" />
     <Compile Include="Repositories\CurrencyRepository.cs" />
+    <Compile Include="Repositories\CustomerRepository.cs" />
     <Compile Include="Repositories\DepositRepository.cs" />
     <Compile Include="Repositories\HistoryRepository.cs" />
+    <Compile Include="Repositories\LoanRepository.cs" />
     <Compile Include="Repositories\OptionDepositRepository.cs" />
+    <Compile Include="Repositories\OptionLoanRepository.cs" />
     <Compile Include="Repositories\Service.cs" />
   </ItemGroup>
   <ItemGroup />

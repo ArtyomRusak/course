@@ -8,15 +8,15 @@ using DataLayer.DomainClasses;
 
 namespace DataLayer.DBContext.Configurations
 {
-    internal class DepositConfiguration : EntityTypeConfiguration<Deposit>
+    internal class LoanConfiguration : EntityTypeConfiguration<Loan>
     {
-        public DepositConfiguration()
+        public LoanConfiguration()
         {
             Property(e => e.Summary).IsRequired();
             Property(e => e.OpeningSummary).IsRequired();
-            HasRequired(e => e.Customer).WithMany(e => e.Deposits).HasForeignKey(e => e.CustomerId);
+            HasRequired(e => e.Customer).WithMany(e=>e.Loans).HasForeignKey(e => e.CustomerId);
+            HasRequired(e => e.OptionLoan).WithMany().HasForeignKey(e => e.OptionLoanId);
             HasRequired(e => e.Currency).WithMany().HasForeignKey(e => e.CurrencyId);
-            HasRequired(e => e.OptionDeposit).WithMany().HasForeignKey(e => e.OptionDepositId);
         }
     }
 }
