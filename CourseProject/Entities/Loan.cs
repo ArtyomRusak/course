@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DataLayer.DomainClasses
+﻿namespace Entities
 {
-    public class Deposit
+    public class Loan
     {
         public int Id { get; set; }
         public double Summary { get; set; }
@@ -15,7 +9,8 @@ namespace DataLayer.DomainClasses
         public int CustomerId { get; set; }
         public Currency Currency { get; set; }
         public int CurrencyId { get; set; }
-        public OptionDeposit OptionDeposit { get; set; }
-        public int OptionDepositId { get; set; }
+        public OptionLoan OptionLoan { get; set; }
+        public int OptionLoanId { get; set; }
     }
 }
+ 

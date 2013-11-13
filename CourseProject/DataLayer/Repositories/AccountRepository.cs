@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using DataLayer.DBContext;
-using DataLayer.DomainClasses;
 using DataLayer.Repositories.Contracts;
+using Entities;
 
 namespace DataLayer.Repositories
 {

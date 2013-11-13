@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DataLayer.DBContext.Configurations;
-using DataLayer.DomainClasses;
+using Entities;
 
 namespace DataLayer.DBContext
 {

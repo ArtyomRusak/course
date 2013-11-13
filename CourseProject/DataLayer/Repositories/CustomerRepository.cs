@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DataLayer.DBContext;
-using DataLayer.DomainClasses;
 using DataLayer.Repositories.Contracts;
+using Entities;
 
 namespace DataLayer.Repositories
 {
