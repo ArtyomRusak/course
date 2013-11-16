@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,7 +14,7 @@ namespace DataLayer.Repositories
     {
         #region [Private members]
 
-        private BankContext _context;
+        private readonly BankContext _context;
 
         #endregion
 
@@ -32,6 +33,7 @@ namespace DataLayer.Repositories
 
         #endregion
 
+
         #region Overrides of Service<OptionDeposit>
 
         public override void Add(OptionDeposit value)
@@ -43,6 +45,12 @@ namespace DataLayer.Repositories
         {
             var value = GetEntityById(id);
             _context.OptionDeposits.Remove(value);
+        }
+
+        public override void Update(OptionDeposit value)
+        {
+            _context.OptionDeposits.Attach(value);
+            _context.Entry(value).State = EntityState.Modified;
         }
 
         public override OptionDeposit GetEntityById(int id)

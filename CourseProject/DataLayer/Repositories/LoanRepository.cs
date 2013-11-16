@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,9 +14,10 @@ namespace DataLayer.Repositories
     {
         #region [Private members]
 
-        private BankContext _context;
+        private readonly BankContext _context;
 
         #endregion
+
 
         #region [Ctor's]
 
@@ -31,6 +33,7 @@ namespace DataLayer.Repositories
 
         #endregion
 
+
         #region Overrides of Service<Loan>
 
         public override void Add(Loan value)
@@ -44,6 +47,12 @@ namespace DataLayer.Repositories
             _context.Loans.Remove(value);
         }
 
+        public override void Update(Loan value)
+        {
+            _context.Loans.Attach(value);
+            _context.Entry(value).State = EntityState.Modified;
+        }
+
         public override Loan GetEntityById(int id)
         {
             return _context.Loans.FirstOrDefault(e => e.Id == id);
@@ -55,6 +64,7 @@ namespace DataLayer.Repositories
         }
 
         #endregion
+
 
         #region Implementation of ILoanRepository
 

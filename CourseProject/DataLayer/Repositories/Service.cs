@@ -11,6 +11,7 @@ namespace DataLayer.Repositories
     {
         public abstract void Add(T value);
         public abstract void Remove(int id);
+        public abstract void Update(T value);
         public abstract T GetEntityById(int id);
         public abstract void Save();
     }

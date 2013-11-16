@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,9 +14,10 @@ namespace DataLayer.Repositories
     {
         #region [Private members]
 
-        private BankContext _context;
+        private readonly BankContext _context;
 
         #endregion
+
 
         #region [Ctor's]
 
@@ -45,6 +47,12 @@ namespace DataLayer.Repositories
             _context.Deposits.Remove(value);
         }
 
+        public override void Update(Deposit value)
+        {
+            _context.Deposits.Attach(value);
+            _context.Entry(value).State = EntityState.Modified;
+        }
+
         public override Deposit GetEntityById(int id)
         {
             return _context.Deposits.FirstOrDefault(e => e.Id == id);
@@ -56,6 +64,7 @@ namespace DataLayer.Repositories
         }
 
         #endregion
+
 
         #region Implementation of IDepositRepository
 

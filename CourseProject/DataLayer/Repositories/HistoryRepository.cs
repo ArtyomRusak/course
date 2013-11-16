@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,7 +14,7 @@ namespace DataLayer.Repositories
     {
         #region [Private members]
 
-        private BankContext _context;
+        private readonly BankContext _context;
 
         #endregion
 
@@ -32,6 +33,7 @@ namespace DataLayer.Repositories
 
         #endregion
 
+
         #region Overrides of Service<History>
 
         public override void Add(History value)
@@ -45,6 +47,12 @@ namespace DataLayer.Repositories
             _context.Histories.Remove(value);
         }
 
+        public override void Update(History value)
+        {
+            _context.Histories.Attach(value);
+            _context.Entry(value).State = EntityState.Modified;
+        }
+
         public override History GetEntityById(int id)
         {
             return _context.Histories.FirstOrDefault(e => e.Id == id);
@@ -56,6 +64,7 @@ namespace DataLayer.Repositories
         }
 
         #endregion
+
 
         #region Implementation of IHistoryRepository
 

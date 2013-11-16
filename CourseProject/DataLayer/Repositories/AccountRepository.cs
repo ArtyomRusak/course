@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using DataLayer.DBContext;
 using DataLayer.Repositories.Contracts;
@@ -30,6 +31,7 @@ namespace DataLayer.Repositories
 
         #endregion
 
+
         #region Overrides of Service<Account>
 
         public override void Add(Account value)
@@ -43,6 +45,12 @@ namespace DataLayer.Repositories
             _context.Accounts.Remove(value);
         }
 
+        public override void Update(Account value)
+        {
+            _context.Accounts.Attach(value);
+            _context.Entry(value).State = EntityState.Modified;
+        }
+
         public override Account GetEntityById(int id)
         {
             return _context.Accounts.FirstOrDefault(e => e.Id == id);
@@ -54,6 +62,7 @@ namespace DataLayer.Repositories
         }
 
         #endregion
+
 
         #region Implementation of IAccountRepository
 
