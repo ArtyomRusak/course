@@ -41,12 +41,6 @@
   <ItemGroup>
     <Compile Include="Guard\Annotations.cs" />
     <Compile Include="Guard\Exceptions\ExceptionBase.cs" />
-    <Compile Include="Guard\Exceptions\MetadataAlreadyExistsException.cs" />
-    <Compile Include="Guard\Exceptions\MetadataBuilderException.cs" />
-    <Compile Include="Guard\Exceptions\MetadataException.cs" />
-    <Compile Include="Guard\Exceptions\MetadataRegistrationException.cs" />
-    <Compile Include="Guard\Exceptions\SerializationException.cs" />
-    <Compile Include="Guard\Exceptions\SpecificationException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Guard\Validation\Guard.Assignable.cs" />
     <Compile Include="Guard\Validation\Guard.Collections.ConsequentiallyNotEquals.cs" />
