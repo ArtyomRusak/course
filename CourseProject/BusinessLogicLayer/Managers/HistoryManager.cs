@@ -58,6 +58,7 @@ namespace BusinessLogicLayer.Managers
 
         #endregion
 
+
         #region [HistoryManager's members]
 
         public List<History> GetHistoriesByCustomerId(int id)

@@ -58,6 +58,7 @@ namespace BusinessLogicLayer.Managers
 
         #endregion
 
+
         #region [AccountManager's members]
 
         public List<Account> GetAccountsByCustomerId(int id)

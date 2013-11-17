@@ -58,6 +58,7 @@ namespace BusinessLogicLayer.Managers
 
         #endregion
 
+
         #region [LoanManager's members]
 
         public List<Loan> GetLoansByCustomerId(int id)

@@ -28,6 +28,7 @@ namespace BusinessLogicLayer.Managers
 
         #endregion
 
+
         #region Implementation of IBussinessLayer<Deposit>
 
         public void AddEntity(Deposit value)
@@ -56,6 +57,7 @@ namespace BusinessLogicLayer.Managers
         }
 
         #endregion
+
 
         #region [DepositManager's members]
 

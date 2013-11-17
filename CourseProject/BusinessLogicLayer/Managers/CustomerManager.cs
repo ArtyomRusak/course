@@ -28,6 +28,7 @@ namespace BusinessLogicLayer.Managers
 
         #endregion
 
+
         #region Implementation of IBussinessLayer<Customer>
 
         public void AddEntity(Customer value)
@@ -56,6 +57,7 @@ namespace BusinessLogicLayer.Managers
         }
 
         #endregion
+
 
         #region [CutomerManager's members]
 
