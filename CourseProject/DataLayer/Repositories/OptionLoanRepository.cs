@@ -1,20 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DataLayer.DBContext;
-using DataLayer.Repositories.Contracts;
 using Entities;
 
 namespace DataLayer.Repositories
 {
-    public class OptionLoanRepository : Service<OptionLoan>, IOptionLoanRepository
+    public class OptionLoanRepository : Service<OptionLoan>
     {
         #region [Private members]
 
         private readonly BankContext _context;
+        private bool _disposed;
 
         #endregion
 
@@ -55,12 +51,26 @@ namespace DataLayer.Repositories
 
         public override OptionLoan GetEntityById(int id)
         {
-            return _context.OptionLoans.FirstOrDefault(e => e.Id == id);
+            return _context.OptionLoans.SingleOrDefault(e => e.Id == id);
+        }
+
+        public override IQueryable<OptionLoan> All()
+        {
+            return _context.OptionLoans;
         }
 
         public override void Save()
         {
             _context.SaveChanges();
+        }
+
+        public override void Dispose()
+        {
+            if (!_disposed)
+            {
+                _context.Dispose();
+                _disposed = true;
+            }
         }
 
         #endregion

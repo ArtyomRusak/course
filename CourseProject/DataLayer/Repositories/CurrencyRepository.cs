@@ -1,20 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DataLayer.DBContext;
-using DataLayer.Repositories.Contracts;
 using Entities;
 
 namespace DataLayer.Repositories
 {
-    public class CurrencyRepository : Service<Currency>, ICurrencyRepository
+    public class CurrencyRepository : Service<Currency>
     {
         #region [Private members]
 
         private readonly BankContext _context;
+        private bool _disposed;
 
         #endregion
 
@@ -55,12 +51,26 @@ namespace DataLayer.Repositories
 
         public override Currency GetEntityById(int id)
         {
-            return _context.Currencies.FirstOrDefault(e => e.Id == id);
+            return _context.Currencies.SingleOrDefault(e => e.Id == id);
+        }
+
+        public override IQueryable<Currency> All()
+        {
+            return _context.Currencies;
         }
 
         public override void Save()
         {
             _context.SaveChanges();
+        }
+
+        public override void Dispose()
+        {
+            if (!_disposed)
+            {
+                _context.Dispose();
+                _disposed = true;
+            }
         }
 
         #endregion

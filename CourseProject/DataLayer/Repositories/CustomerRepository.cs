@@ -1,20 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DataLayer.DBContext;
-using DataLayer.Repositories.Contracts;
 using Entities;
 
 namespace DataLayer.Repositories
 {
-    public class CustomerRepository : Service<Customer>, ICustomerRepository
+    public class CustomerRepository : Service<Customer>
     {
         #region [Private members]
 
         private readonly BankContext _context;
+        private bool _disposed;
 
         #endregion
 
@@ -55,7 +51,12 @@ namespace DataLayer.Repositories
 
         public override Customer GetEntityById(int id)
         {
-            return _context.Customers.FirstOrDefault(e => e.Id == id);
+            return _context.Customers.SingleOrDefault(e => e.Id == id);
+        }
+
+        public override IQueryable<Customer> All()
+        {
+            return _context.Customers;
         }
 
         public override void Save()
@@ -63,19 +64,13 @@ namespace DataLayer.Repositories
             _context.SaveChanges();
         }
 
-        #endregion
-
-
-        #region Implementation of ICustomerRepository
-
-        public Customer GetCustomerByPassportData(string passportData)
+        public override void Dispose()
         {
-            return _context.Customers.FirstOrDefault(e => e.PassportData == passportData);
-        }
-
-        public List<Customer> GetCustomersWhichContainsSurname(string surname)
-        {
-            return _context.Customers.Where(e => e.Surname.Contains(surname)).ToList();
+            if (!_disposed)
+            {
+                _context.Dispose();
+                _disposed = true;
+            }
         }
 
         #endregion

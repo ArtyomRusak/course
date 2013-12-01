@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using DataLayer.DBContext;
 using DataLayer.Repositories;
 using Entities;
@@ -63,7 +64,7 @@ namespace BusinessLogicLayer.Managers
 
         public List<Deposit> GetDepositsByCustomerId(int id)
         {
-            return _repository.GetDepositsByCustomerId(id);
+            return _repository.All().Where(e => e.CustomerId == id).ToList();
         }
 
         #endregion

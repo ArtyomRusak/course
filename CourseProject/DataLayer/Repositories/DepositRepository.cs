@@ -1,20 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DataLayer.DBContext;
-using DataLayer.Repositories.Contracts;
 using Entities;
 
 namespace DataLayer.Repositories
 {
-    public class DepositRepository : Service<Deposit>, IDepositRepository
+    public class DepositRepository : Service<Deposit>
     {
         #region [Private members]
 
         private readonly BankContext _context;
+        private bool _disposed;
 
         #endregion
 
@@ -55,7 +51,12 @@ namespace DataLayer.Repositories
 
         public override Deposit GetEntityById(int id)
         {
-            return _context.Deposits.FirstOrDefault(e => e.Id == id);
+            return _context.Deposits.SingleOrDefault(e => e.Id == id);
+        }
+
+        public override IQueryable<Deposit> All()
+        {
+            return _context.Deposits;
         }
 
         public override void Save()
@@ -63,14 +64,13 @@ namespace DataLayer.Repositories
             _context.SaveChanges();
         }
 
-        #endregion
-
-
-        #region Implementation of IDepositRepository
-
-        public List<Deposit> GetDepositsByCustomerId(int id)
+        public override void Dispose()
         {
-            return _context.Deposits.Where(e => e.CustomerId == id).ToList();
+            if (!_disposed)
+            {
+                _context.Dispose();
+                _disposed = true;
+            }
         }
 
         #endregion

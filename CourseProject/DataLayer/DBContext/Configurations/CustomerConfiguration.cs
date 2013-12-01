@@ -19,6 +19,7 @@ namespace DataLayer.DBContext.Configurations
             Property(e => e.Address).HasMaxLength(100);
             Property(e => e.Age).IsRequired();
             Property(e => e.PassportData).HasMaxLength(20).IsRequired();
+            HasMany(e => e.Deposits).WithRequired(e => e.Customer).HasForeignKey(e => e.CustomerId);
         }
     }
 }

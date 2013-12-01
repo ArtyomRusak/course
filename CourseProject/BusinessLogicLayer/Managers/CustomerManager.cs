@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using DataLayer.DBContext;
 using DataLayer.Repositories;
 using Entities;
@@ -63,12 +64,12 @@ namespace BusinessLogicLayer.Managers
 
         public Customer GetCustomerByPassportData(string passportData)
         {
-            return _repository.GetCustomerByPassportData(passportData);
+            return _repository.All().SingleOrDefault(e => e.PassportData == passportData);
         }
 
         public List<Customer> GetCustomersWhichContainsSurname(string surname)
         {
-            return _repository.GetCustomersWhichContainsSurname(surname);
+            return _repository.All().Where(e => e.Surname.Contains(surname)).ToList();
         }
 
         #endregion

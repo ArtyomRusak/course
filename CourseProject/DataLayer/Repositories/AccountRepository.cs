@@ -1,18 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Linq;
 using DataLayer.DBContext;
-using DataLayer.Repositories.Contracts;
 using Entities;
 
 namespace DataLayer.Repositories
 {
-    public class AccountRepository : Service<Account>, IAccountRepository
+    public class AccountRepository : Service<Account>
     {
         #region [Private members]
 
         private readonly BankContext _context;
+        private bool _disposed;
 
         #endregion
 
@@ -53,7 +51,12 @@ namespace DataLayer.Repositories
 
         public override Account GetEntityById(int id)
         {
-            return _context.Accounts.FirstOrDefault(e => e.Id == id);
+            return _context.Accounts.SingleOrDefault(e => e.Id == id);
+        }
+
+        public override IQueryable<Account> All()
+        {
+            return _context.Accounts;
         }
 
         public override void Save()
@@ -61,14 +64,13 @@ namespace DataLayer.Repositories
             _context.SaveChanges();
         }
 
-        #endregion
-
-
-        #region Implementation of IAccountRepository
-
-        public List<Account> GetAccountsByCustomerId(int id)
+        public override void Dispose()
         {
-            return _context.Accounts.Where(e => e.CustomerId == id).ToList();
+            if (!_disposed)
+            {
+                _context.Dispose();
+                _disposed = true;
+            }
         }
 
         #endregion

@@ -33,7 +33,6 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.customerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.surnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -42,6 +41,7 @@
             this.addressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ageDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.passportDataDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.customerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -65,7 +65,7 @@
             this.textBox1.Location = new System.Drawing.Point(81, 21);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(142, 36);
+            this.textBox1.Size = new System.Drawing.Size(142, 30);
             this.textBox1.TabIndex = 1;
             // 
             // button1
@@ -99,10 +99,6 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(466, 199);
             this.dataGridView1.TabIndex = 3;
-            // 
-            // customerBindingSource
-            // 
-            this.customerBindingSource.DataSource = typeof(Entities.Customer);
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -159,6 +155,10 @@
             this.passportDataDataGridViewTextBoxColumn.HeaderText = "PassportData";
             this.passportDataDataGridViewTextBoxColumn.Name = "passportDataDataGridViewTextBoxColumn";
             this.passportDataDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // customerBindingSource
+            // 
+            this.customerBindingSource.DataSource = typeof(Entities.Customer);
             // 
             // FindCustomerForm
             // 

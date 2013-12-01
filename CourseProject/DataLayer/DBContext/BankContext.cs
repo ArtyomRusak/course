@@ -20,6 +20,16 @@ namespace DataLayer.DBContext
         public DbSet<OptionDeposit> OptionDeposits { get; set; }
         public DbSet<OptionLoan> OptionLoans { get; set; }
 
+        public BankContext()
+        {
+            
+        }
+
+        public BankContext(string connectionString) : base(connectionString)
+        {
+            
+        }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new AccountConfiguration());
