@@ -69,13 +69,13 @@
       <Project>{0c355e43-fadc-4bff-9875-9ee5f9cadcb8}</Project>
       <Name>BusinessLogicLayer</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{4a941f6f-a668-4aa2-9ccb-9fc98a9a61cf}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DataLayer\DataLayer.csproj">
       <Project>{a0420a1b-0742-4478-a382-86ee8f3621b6}</Project>
       <Name>DataLayer</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Entities\Entities.csproj">
-      <Project>{4a941f6f-a668-4aa2-9ccb-9fc98a9a61cf}</Project>
-      <Name>Entities</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
