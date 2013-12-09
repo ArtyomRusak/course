@@ -48,6 +48,7 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.SqlServer.Compact.4.0.8876.1\lib\net40\System.Data.SqlServerCe.dll</HintPath>
     </Reference>
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -56,7 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DBContext\BankContext.cs" />
-    <Compile Include="DBContext\BankInitialization.cs" />
+    <Compile Include="DBContext\Initializers\BankInitialization.cs" />
     <Compile Include="DBContext\Configurations\AccountConfiguration.cs" />
     <Compile Include="DBContext\Configurations\CurrencyConfiguration.cs" />
     <Compile Include="DBContext\Configurations\CustomerConfiguration.cs" />
@@ -66,6 +67,7 @@
     <Compile Include="DBContext\Configurations\OptionDepositConfiguration.cs" />
     <Compile Include="DBContext\Configurations\OptionLoanConfiguration.cs" />
     <Compile Include="DBContext\Initializers\RecreateAlways.cs" />
+    <Compile Include="DBContext\Initializers\RecreateIfModelChanges.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\Repository.cs" />
     <Compile Include="Repositories\Repository`1.cs" />

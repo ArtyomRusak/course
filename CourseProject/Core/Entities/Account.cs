@@ -11,5 +11,10 @@ namespace Core.Entities
         public int CustomerId { get; set; }
         public Currency Currency { get; set; }
         public int CurrencyId { get; set; }
+
+        public void NullAccount()
+        {
+            Summary = 0;
+        }
     }
 }

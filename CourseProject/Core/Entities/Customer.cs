@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Core.Entities
 {
@@ -25,5 +26,27 @@ namespace Core.Entities
         public virtual ICollection<Deposit> Deposits { get; set; }
         public virtual ICollection<Loan> Loans { get; set; }
         public virtual ICollection<History> Histories { get; set; }
+
+        public void SetAge()
+        {
+            TimeSpan timeSpan = DateTime.Now - BirthDate;
+            double year = timeSpan.TotalDays/365;
+            Age = (int) year;
+        }
+
+        public List<Account> GetAccounts()
+        {
+            return Accounts.ToList();
+        }
+
+        public List<Loan> GetLoans()
+        {
+            return Loans.ToList();
+        }
+
+        public List<Deposit> GetDeposits()
+        {
+            return Deposits.ToList();
+        } 
     }
 }

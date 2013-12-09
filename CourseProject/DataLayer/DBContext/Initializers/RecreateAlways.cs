@@ -11,6 +11,7 @@ namespace DataLayer.DBContext.Initializers
         {
             context.Database.Delete();
             context.Database.Create();
+            context.Database.ExecuteSqlCommand("ALTER TABLE Customers ADD CONSTRAINT PassportDataUnique UNIQUE (PassportData)");
             try
             {
                 context.SaveChanges();

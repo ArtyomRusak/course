@@ -12,7 +12,7 @@ namespace Core
     {
         IRepository<Account> GetAccountRepository();
         IRepository<Currency> GetCurrencyRepository();
-        IRepository<Customer> GetCustomeRepository();
+        IRepository<Customer> GetCustomerRepository();
         IRepository<Deposit> GetDepositRepository();
         IRepository<History> GetHistoryRepository();
         IRepository<Loan> GetLoanRepository();

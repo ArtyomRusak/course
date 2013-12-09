@@ -46,7 +46,7 @@ namespace DataLayer
             return _currencyRepository ?? (_currencyRepository = new Repository<Currency>(_context));
         }
 
-        public IRepository<Customer> GetCustomeRepository()
+        public IRepository<Customer> GetCustomerRepository()
         {
             return _customerRepository ?? (_customerRepository = new Repository<Customer>(_context));
         }
@@ -117,6 +117,11 @@ namespace DataLayer
             {
                 _transaction.Rollback();
             }
+        }
+
+        void IUnitOfWork.SaveChanges()
+        {
+            _context.SaveChanges();
         }
 
         #endregion

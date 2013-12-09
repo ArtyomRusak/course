@@ -1,6 +1,6 @@
 ﻿using System.Data.Entity;
 
-namespace DataLayer.DBContext
+namespace DataLayer.DBContext.Initializers
 {
     public class BankInitialization : IDatabaseInitializer<BankContext>
     {

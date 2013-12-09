@@ -9,6 +9,7 @@ namespace DataLayer.DBContext.Configurations
         {
             Property(e => e.Summary).IsRequired();
             Property(e => e.OpeningSummary).IsRequired();
+            Property(e => e.CreateDate).IsRequired();
             HasRequired(e => e.Customer).WithMany(e=>e.Loans).HasForeignKey(e => e.CustomerId);
             HasRequired(e => e.OptionLoan).WithMany().HasForeignKey(e => e.OptionLoanId);
             HasRequired(e => e.Currency).WithMany().HasForeignKey(e => e.CurrencyId);
