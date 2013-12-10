@@ -15,6 +15,8 @@ namespace DataLayer
 {
     public class UnitOfWork : IUnitOfWork, IRepositoryFactory
     {
+        #region [Private members]
+
         private readonly BankContext _context;
         private DbContextTransaction _transaction;
         private IRepository<Account> _accountRepository;
@@ -24,9 +26,12 @@ namespace DataLayer
         private IRepository<History> _historyRepository;
         private IRepository<Loan> _loanRepository;
         private IRepository<OptionDeposit> _optionDepositRepository;
-        private IRepository<OptionLoan> _optionLoanRepository; 
+        private IRepository<OptionLoan> _optionLoanRepository;
         private bool _disposed;
         private bool _isTransactionActive;
+
+        #endregion
+
 
         public UnitOfWork(BankContext context)
         {

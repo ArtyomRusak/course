@@ -33,6 +33,7 @@ namespace BusinessLogicLayer.Services
 
         #endregion
 
+
         #region [LoanService's members]
 
         public Loan CreateLoan(double startSummary, int customerId, int currencyId, int optionLoanId)
@@ -76,6 +77,20 @@ namespace BusinessLogicLayer.Services
             }
             catch (Exception ex)
             {
+                throw new LoanServiceException(ex);
+            }
+        }
+
+        public Loan GetLoanById(int loanId)
+        {
+            var loanRepository = _factoryOfRepositories.GetLoanRepository();
+            try
+            {
+                return loanRepository.GetEntityById(loanId);
+            }
+            catch (Exception ex)
+            {
+                
                 throw new LoanServiceException(ex);
             }
         }
