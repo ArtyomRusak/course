@@ -39,6 +39,7 @@ namespace DataLayer
             _transaction = _context.Database.BeginTransaction();
         }
 
+
         #region Implementation of IRepositoryFactory
 
         public IRepository<Account> GetAccountRepository()
@@ -83,6 +84,7 @@ namespace DataLayer
 
         #endregion
 
+
         #region Implementation of IDisposable
 
         public void Dispose()
@@ -95,6 +97,7 @@ namespace DataLayer
         }
 
         #endregion
+
 
         #region Implementation of IUnitOfWork
 
@@ -124,12 +127,13 @@ namespace DataLayer
             }
         }
 
-        void IUnitOfWork.SaveChanges()
+        public void PreSave()
         {
             _context.SaveChanges();
         }
 
         #endregion
+
 
         #region [UnitOfWork's members]
 

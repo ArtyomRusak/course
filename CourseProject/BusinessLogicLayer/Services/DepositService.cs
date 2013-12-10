@@ -51,6 +51,16 @@ namespace BusinessLogicLayer.Services
 
             var depositRepository = _factoryOfRepositories.GetDepositRepository();
             depositRepository.Create(deposit);
+
+            try
+            {
+                _unitOfWork.PreSave();
+            }
+            catch (Exception exception)
+            {
+                throw new ServiceException(exception);
+            }
+
             return deposit;
         }
 

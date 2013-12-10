@@ -12,6 +12,6 @@ namespace Core
 
         void Rollback();
 
-        void SaveChanges();
+        void PreSave();
     }
 }

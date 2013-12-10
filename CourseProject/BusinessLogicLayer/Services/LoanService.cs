@@ -52,6 +52,16 @@ namespace BusinessLogicLayer.Services
 
             var loanRepository = _factoryOfRepositories.GetLoanRepository();
             loanRepository.Create(loan);
+
+            try
+            {
+                _unitOfWork.PreSave();
+            }
+            catch (Exception exception)
+            {
+                throw new ServiceException(exception);
+            }
+
             return loan;
         }
 

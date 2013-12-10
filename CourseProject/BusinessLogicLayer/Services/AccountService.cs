@@ -50,6 +50,16 @@ namespace BusinessLogicLayer.Services
 
             var accountRepository = _factoryOfRepositories.GetAccountRepository();
             accountRepository.Create(account);
+
+            try
+            {
+                _unitOfWork.PreSave();
+            }
+            catch (Exception exception)
+            {
+                throw new ServiceException(exception);
+            }
+
             return account;
         }
 

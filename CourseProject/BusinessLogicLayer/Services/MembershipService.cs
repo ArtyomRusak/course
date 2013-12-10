@@ -54,7 +54,16 @@ namespace BusinessLogicLayer.Services
 
             var customerRepository = _factoryOfRepositories.GetCustomerRepository();
             customerRepository.Create(customer);
-            _unitOfWork.SaveChanges();
+
+            try
+            {
+                _unitOfWork.PreSave();
+            }
+            catch (Exception e)
+            {
+                throw new ServiceException(e);
+            }
+
             return customer;
         }
 
