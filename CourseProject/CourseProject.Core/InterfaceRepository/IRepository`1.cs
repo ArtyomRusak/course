@@ -1,0 +1,17 @@
+﻿using System;
+using System.Linq;
+using System.Linq.Expressions;
+
+namespace CourseProject.Core.InterfaceRepository
+{
+    public interface IRepository<TEntity> where TEntity : Entity
+    {
+        void Create(TEntity value);
+        void Update(TEntity value);
+        void Remove(TEntity value);
+        TEntity GetEntityById(int id);
+        TEntity Find(Expression<Func<TEntity, bool>> predicate);
+        IQueryable<TEntity> All();
+        IQueryable<TEntity> Filter(Expression<Func<TEntity, bool>> predicate);
+    }
+}

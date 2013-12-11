@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Data.Entity;
-using BusinessLogicLayer.Services;
-using Core;
-using DataLayer;
-using DataLayer.DBContext;
-using DataLayer.DBContext.Initializers;
+using CourseProject.Core.Entities;
+using CourseProject.EFData;
+using CourseProject.EFData.DBContext;
+using CourseProject.EFData.DBContext.Initializers;
+using CourseProject.Services.Services;
 using NUnit.Framework;
-using Core.Entities;
 
 namespace Tests
 {

@@ -1,0 +1,46 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using CourseProject.EFData;
+using CourseProject.EFData.DBContext;
+using CourseProject.Services.Services;
+
+namespace UIBank
+{
+    public partial class MainForm : Form
+    {
+        public MainForm()
+        {
+            InitializeComponent();
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            BankContext context = new BankContext("BankConnectionString");
+            var unitOfWork = new UnitOfWork(context);
+            LoanService loanService = new LoanService(unitOfWork, unitOfWork);
+            AccountService accountService = new AccountService(unitOfWork, unitOfWork);
+            DepositService depositService = new DepositService(unitOfWork, unitOfWork);
+            MembershipService membershipService = new MembershipService(unitOfWork, unitOfWork);
+
+            int countOfLoans = loanService.GetCountOfAllLoans();
+            int countOfAccounts = accountService.GetCountOfAllAccounts();
+            int countOfDeposits = depositService.GetCountOfAllDeposits();
+            int countOfCustomers = membershipService.GetCountOfAllCustomers();
+
+            this._lblLoans.Text = countOfLoans.ToString();
+            this._lblCustomers.Text = countOfCustomers.ToString();
+            this._lblDeposits.Text = countOfDeposits.ToString();
+            this._lblAccounts.Text = countOfAccounts.ToString();
+
+            this._cbxSelect.SelectedIndex = 0;
+            unitOfWork.Dispose();
+        }
+    }
+}
