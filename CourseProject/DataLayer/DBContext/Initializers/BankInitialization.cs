@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data.Entity;
 using System.Transactions;
+using Core.Entities;
 
 namespace DataLayer.DBContext.Initializers
 {
@@ -36,7 +37,27 @@ namespace DataLayer.DBContext.Initializers
 
         public void Seed(BankContext context)
         {
-            
+            var byr = new Currency { Value = "BYR" };
+            var usd = new Currency { Value = "USD" };
+
+            context.Currencies.Add(byr);
+            context.Currencies.Add(usd);
+
+            var sber = new OptionDeposit { Name = "Сберегательный", Percent = 3 };
+            var orig = new OptionDeposit { Name = "Оригинальный", Percent = 5 };
+            var money = new OptionDeposit { Name = "Денежный", Percent = 9 };
+
+            context.OptionDeposits.Add(sber);
+            context.OptionDeposits.Add(orig);
+            context.OptionDeposits.Add(money);
+
+            var beforeSalary = new OptionLoan { Name = "До зарплаты", Percent = 1 };
+            var loan = new OptionLoan { Name = "Займ под проценты", Percent = 4 };
+
+            context.OptionLoans.Add(beforeSalary);
+            context.OptionLoans.Add(loan);
+
+            context.SaveChanges();
         }
     }
 }

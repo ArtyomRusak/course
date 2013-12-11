@@ -33,20 +33,5 @@ namespace Core.Entities
             double year = timeSpan.TotalDays/365;
             Age = (int) year;
         }
-
-        public List<Account> GetAccounts()
-        {
-            return Accounts.ToList();
-        }
-
-        public List<Loan> GetLoans()
-        {
-            return Loans.ToList();
-        }
-
-        public List<Deposit> GetDeposits()
-        {
-            return Deposits.ToList();
-        } 
     }
 }
