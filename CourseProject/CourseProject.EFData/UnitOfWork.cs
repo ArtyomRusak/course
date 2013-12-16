@@ -101,10 +101,14 @@ namespace CourseProject.EFData
                 {
                     _context.SaveChanges();
                     _transaction.Commit();
+                    _isTransactionActive = false;
                 }
                 catch (Exception e)
                 {
                     _transaction.Rollback();
+                    _context.Dispose();
+                    _disposed = true;
+                    _isTransactionActive = false;
                     throw new RepositoryException(e);
                 }
             }
@@ -134,6 +138,7 @@ namespace CourseProject.EFData
             catch (Exception e)
             {
                 _transaction.Rollback();
+                _isTransactionActive = false;
                 throw new RepositoryException(e.Message);
             }
         }
@@ -143,28 +148,13 @@ namespace CourseProject.EFData
             if (_isTransactionActive && !_disposed)
             {
                 _transaction.Rollback();
+                _isTransactionActive = false;
             }
         }
 
         public void PreSave()
         {
             _context.SaveChanges();
-        }
-
-        #endregion
-
-
-        #region [UnitOfWork's members]
-
-        public bool SetNewTransaction()
-        {
-            if (!_isTransactionActive && !_disposed)
-            {
-                _transaction = _context.Database.BeginTransaction();
-                _isTransactionActive = true;
-                return true;
-            }
-            return false;
         }
 
         #endregion
