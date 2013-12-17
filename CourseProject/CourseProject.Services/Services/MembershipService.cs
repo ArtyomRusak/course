@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using CourseProject.Core;
 using CourseProject.Core.Entities;
@@ -41,7 +42,7 @@ namespace CourseProject.Services.Services
                 Name = name,
                 Surname = surname,
                 Patronymic = patronymic,
-                PassportData = passportData,
+                PassportData = passportData.ToUpper(),
                 Address = address,
                 BirthDate = birthDate
             };
@@ -72,6 +73,19 @@ namespace CourseProject.Services.Services
             }
             return customer;
         }
+
+        public List<Customer> GetCustomersBySurname(string surname)
+        {
+            var customerRepository = _factoryOfRepositories.GetCustomerRepository();
+            try
+            {
+                return customerRepository.Filter(e => e.Surname.Contains(surname)).ToList();
+            }
+            catch (Exception e)
+            {
+                throw new MembershipServiceException(e.Message);
+            }
+        } 
 
         public Customer GetCustomerById(int userId)
         {

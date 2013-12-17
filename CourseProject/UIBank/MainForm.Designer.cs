@@ -13,6 +13,7 @@
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
+            _unitOfWork.Dispose();
             if (disposing && (components != null))
             {
                 components.Dispose();
@@ -39,9 +40,17 @@
             this._lblCustomers = new System.Windows.Forms.Label();
             this.@__findCustomer = new System.Windows.Forms.Button();
             this._customerView = new System.Windows.Forms.DataGridView();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this._cbxSelect = new System.Windows.Forms.ComboBox();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.surnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.patronymicDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.birthDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.addressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ageDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.passportDataDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.customerBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this._tbxFindCustomer = new System.Windows.Forms.TextBox();
+            this._cbxSelect = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this._customerView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -85,6 +94,7 @@
             this._btnAddCustomer.TabIndex = 3;
             this._btnAddCustomer.Text = "Добавить пользователя";
             this._btnAddCustomer.UseVisualStyleBackColor = true;
+            this._btnAddCustomer.Click += new System.EventHandler(this._btnAddCustomer_Click);
             // 
             // _lblAccounts
             // 
@@ -131,22 +141,101 @@
             this.@__findCustomer.TabIndex = 8;
             this.@__findCustomer.Text = "Найти";
             this.@__findCustomer.UseVisualStyleBackColor = true;
+            this.@__findCustomer.Click += new System.EventHandler(this.@__findCustomer_Click);
             // 
             // _customerView
             // 
+            this._customerView.AllowUserToAddRows = false;
+            this._customerView.AllowUserToDeleteRows = false;
+            this._customerView.AutoGenerateColumns = false;
             this._customerView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this._customerView.Location = new System.Drawing.Point(267, 384);
+            this._customerView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idDataGridViewTextBoxColumn,
+            this.nameDataGridViewTextBoxColumn,
+            this.surnameDataGridViewTextBoxColumn,
+            this.patronymicDataGridViewTextBoxColumn,
+            this.birthDateDataGridViewTextBoxColumn,
+            this.addressDataGridViewTextBoxColumn,
+            this.ageDataGridViewTextBoxColumn,
+            this.passportDataDataGridViewTextBoxColumn});
+            this._customerView.DataSource = this.customerBindingSource;
+            this._customerView.Location = new System.Drawing.Point(145, 386);
+            this._customerView.MultiSelect = false;
             this._customerView.Name = "_customerView";
-            this._customerView.Size = new System.Drawing.Size(533, 238);
+            this._customerView.ReadOnly = true;
+            this._customerView.Size = new System.Drawing.Size(732, 238);
             this._customerView.TabIndex = 9;
             // 
-            // textBox1
+            // idDataGridViewTextBoxColumn
             // 
-            this.textBox1.Location = new System.Drawing.Point(452, 332);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(130, 37);
-            this.textBox1.TabIndex = 10;
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // surnameDataGridViewTextBoxColumn
+            // 
+            this.surnameDataGridViewTextBoxColumn.DataPropertyName = "Surname";
+            this.surnameDataGridViewTextBoxColumn.HeaderText = "Surname";
+            this.surnameDataGridViewTextBoxColumn.Name = "surnameDataGridViewTextBoxColumn";
+            this.surnameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // patronymicDataGridViewTextBoxColumn
+            // 
+            this.patronymicDataGridViewTextBoxColumn.DataPropertyName = "Patronymic";
+            this.patronymicDataGridViewTextBoxColumn.HeaderText = "Patronymic";
+            this.patronymicDataGridViewTextBoxColumn.Name = "patronymicDataGridViewTextBoxColumn";
+            this.patronymicDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // birthDateDataGridViewTextBoxColumn
+            // 
+            this.birthDateDataGridViewTextBoxColumn.DataPropertyName = "BirthDate";
+            this.birthDateDataGridViewTextBoxColumn.HeaderText = "BirthDate";
+            this.birthDateDataGridViewTextBoxColumn.Name = "birthDateDataGridViewTextBoxColumn";
+            this.birthDateDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // addressDataGridViewTextBoxColumn
+            // 
+            this.addressDataGridViewTextBoxColumn.DataPropertyName = "Address";
+            this.addressDataGridViewTextBoxColumn.HeaderText = "Address";
+            this.addressDataGridViewTextBoxColumn.Name = "addressDataGridViewTextBoxColumn";
+            this.addressDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // ageDataGridViewTextBoxColumn
+            // 
+            this.ageDataGridViewTextBoxColumn.DataPropertyName = "Age";
+            this.ageDataGridViewTextBoxColumn.HeaderText = "Age";
+            this.ageDataGridViewTextBoxColumn.Name = "ageDataGridViewTextBoxColumn";
+            this.ageDataGridViewTextBoxColumn.ReadOnly = true;
+            this.ageDataGridViewTextBoxColumn.Width = 50;
+            // 
+            // passportDataDataGridViewTextBoxColumn
+            // 
+            this.passportDataDataGridViewTextBoxColumn.DataPropertyName = "PassportData";
+            this.passportDataDataGridViewTextBoxColumn.HeaderText = "PassportData";
+            this.passportDataDataGridViewTextBoxColumn.Name = "passportDataDataGridViewTextBoxColumn";
+            this.passportDataDataGridViewTextBoxColumn.ReadOnly = true;
+            this.passportDataDataGridViewTextBoxColumn.Width = 130;
+            // 
+            // customerBindingSource
+            // 
+            this.customerBindingSource.DataSource = typeof(CourseProject.Core.Entities.Customer);
+            // 
+            // _tbxFindCustomer
+            // 
+            this._tbxFindCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this._tbxFindCustomer.Location = new System.Drawing.Point(452, 341);
+            this._tbxFindCustomer.Name = "_tbxFindCustomer";
+            this._tbxFindCustomer.Size = new System.Drawing.Size(130, 22);
+            this._tbxFindCustomer.TabIndex = 10;
             // 
             // _cbxSelect
             // 
@@ -160,18 +249,16 @@
             this._cbxSelect.Name = "_cbxSelect";
             this._cbxSelect.Size = new System.Drawing.Size(147, 24);
             this._cbxSelect.TabIndex = 11;
-            // 
-            // customerBindingSource
-            // 
-            this.customerBindingSource.DataSource = typeof(CourseProject.Core.Entities.Customer);
+            this._cbxSelect.SelectedIndexChanged += new System.EventHandler(this._cbxSelect_SelectedIndexChanged);
             // 
             // MainForm
             // 
+            this.AcceptButton = this.@__findCustomer;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1016, 655);
             this.Controls.Add(this._cbxSelect);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this._tbxFindCustomer);
             this.Controls.Add(this._customerView);
             this.Controls.Add(this.@__findCustomer);
             this.Controls.Add(this._lblCustomers);
@@ -183,7 +270,7 @@
             this.Controls.Add(this._btnAddDeposit);
             this.Controls.Add(this._btnAddAccount);
             this.Name = "MainForm";
-            this.Text = "Form1";
+            this.Text = "MainFrame";
             this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this._customerView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).EndInit();
@@ -204,8 +291,16 @@
         private System.Windows.Forms.Label _lblCustomers;
         private System.Windows.Forms.Button __findCustomer;
         private System.Windows.Forms.DataGridView _customerView;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox _tbxFindCustomer;
         private System.Windows.Forms.ComboBox _cbxSelect;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn surnameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn patronymicDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn birthDateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn addressDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ageDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn passportDataDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource customerBindingSource;
     }
 }

@@ -63,9 +63,36 @@ namespace UIBank {
         /// <summary>
         ///   Looks up a localized string similar to BankConnectionString.
         /// </summary>
-        internal static string ConectionString {
+        internal static string ConnectionString {
             get {
-                return ResourceManager.GetString("ConectionString", resourceCulture);
+                return ResourceManager.GetString("ConnectionString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Customer is successfully added..
+        /// </summary>
+        internal static string CustomerAdded {
+            get {
+                return ResourceManager.GetString("CustomerAdded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There is empty fields..
+        /// </summary>
+        internal static string EmptyFields {
+            get {
+                return ResourceManager.GetString("EmptyFields", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Field can not be empty..
+        /// </summary>
+        internal static string FindCustomerError {
+            get {
+                return ResourceManager.GetString("FindCustomerError", resourceCulture);
             }
         }
     }

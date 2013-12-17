@@ -117,7 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ConectionString" xml:space="preserve">
+  <data name="ConnectionString" xml:space="preserve">
     <value>BankConnectionString</value>
+  </data>
+  <data name="CustomerAdded" xml:space="preserve">
+    <value>Customer is successfully added.</value>
+  </data>
+  <data name="EmptyFields" xml:space="preserve">
+    <value>There is empty fields.</value>
+  </data>
+  <data name="FindCustomerError" xml:space="preserve">
+    <value>Field can not be empty.</value>
   </data>
 </root>
