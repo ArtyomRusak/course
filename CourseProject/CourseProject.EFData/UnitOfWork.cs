@@ -14,7 +14,7 @@ namespace CourseProject.EFData
         #region [Private members]
 
         private readonly BankContext _context;
-        private DbContextTransaction _transaction;
+        private readonly DbContextTransaction _transaction;
         private IRepository<Account> _accountRepository;
         private IRepository<Currency> _currencyRepository;
         private IRepository<Customer> _customerRepository;

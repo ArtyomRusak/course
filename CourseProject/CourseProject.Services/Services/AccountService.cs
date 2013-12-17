@@ -12,7 +12,7 @@ namespace CourseProject.Services.Services
     {
         #region [Private members]
 
-        private IUnitOfWork _unitOfWork;
+        private readonly IUnitOfWork _unitOfWork;
         private readonly IRepositoryFactory _factoryOfRepositories;
 
         #endregion
