@@ -22,12 +22,12 @@ namespace UIBank
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            BankContext context = new BankContext("BankConnectionString");
+            var context = new BankContext(Resources.ConectionString);
             var unitOfWork = new UnitOfWork(context);
-            LoanService loanService = new LoanService(unitOfWork, unitOfWork);
-            AccountService accountService = new AccountService(unitOfWork, unitOfWork);
-            DepositService depositService = new DepositService(unitOfWork, unitOfWork);
-            MembershipService membershipService = new MembershipService(unitOfWork, unitOfWork);
+            var loanService = new LoanService(unitOfWork, unitOfWork);
+            var accountService = new AccountService(unitOfWork, unitOfWork);
+            var depositService = new DepositService(unitOfWork, unitOfWork);
+            var membershipService = new MembershipService(unitOfWork, unitOfWork);
 
             int countOfLoans = loanService.GetCountOfAllLoans();
             int countOfAccounts = accountService.GetCountOfAllAccounts();

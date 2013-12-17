@@ -35,6 +35,7 @@ namespace CourseProject.EFData
         {
             _context = context;
             _transaction = _context.Database.BeginTransaction();
+            _isTransactionActive = true;
         }
 
         public UnitOfWork()

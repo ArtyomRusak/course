@@ -31,6 +31,7 @@ namespace CourseProject.Services.Services
 
         #endregion
 
+
         #region [HistoryService's members]
 
         public History CreateRecord(string message, int customerId)

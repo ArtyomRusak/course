@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this._btnAddAccount = new System.Windows.Forms.Button();
             this._btnAddDeposit = new System.Windows.Forms.Button();
             this._btnAddLoan = new System.Windows.Forms.Button();
@@ -37,10 +38,12 @@
             this._lblDeposits = new System.Windows.Forms.Label();
             this._lblCustomers = new System.Windows.Forms.Label();
             this.@__findCustomer = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this._customerView = new System.Windows.Forms.DataGridView();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this._cbxSelect = new System.Windows.Forms.ComboBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.customerBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this._customerView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // _btnAddAccount
@@ -76,7 +79,7 @@
             // _btnAddCustomer
             // 
             this._btnAddCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this._btnAddCustomer.Location = new System.Drawing.Point(462, 91);
+            this._btnAddCustomer.Location = new System.Drawing.Point(421, 73);
             this._btnAddCustomer.Name = "_btnAddCustomer";
             this._btnAddCustomer.Size = new System.Drawing.Size(161, 54);
             this._btnAddCustomer.TabIndex = 3;
@@ -129,13 +132,13 @@
             this.@__findCustomer.Text = "Найти";
             this.@__findCustomer.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // _customerView
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(267, 384);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(533, 238);
-            this.dataGridView1.TabIndex = 9;
+            this._customerView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this._customerView.Location = new System.Drawing.Point(267, 384);
+            this._customerView.Name = "_customerView";
+            this._customerView.Size = new System.Drawing.Size(533, 238);
+            this._customerView.TabIndex = 9;
             // 
             // textBox1
             // 
@@ -158,6 +161,10 @@
             this._cbxSelect.Size = new System.Drawing.Size(147, 24);
             this._cbxSelect.TabIndex = 11;
             // 
+            // customerBindingSource
+            // 
+            this.customerBindingSource.DataSource = typeof(CourseProject.Core.Entities.Customer);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -165,7 +172,7 @@
             this.ClientSize = new System.Drawing.Size(1016, 655);
             this.Controls.Add(this._cbxSelect);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this._customerView);
             this.Controls.Add(this.@__findCustomer);
             this.Controls.Add(this._lblCustomers);
             this.Controls.Add(this._lblDeposits);
@@ -178,7 +185,8 @@
             this.Name = "MainForm";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.MainForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._customerView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -195,9 +203,10 @@
         private System.Windows.Forms.Label _lblDeposits;
         private System.Windows.Forms.Label _lblCustomers;
         private System.Windows.Forms.Button __findCustomer;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView _customerView;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.ComboBox _cbxSelect;
+        private System.Windows.Forms.BindingSource customerBindingSource;
     }
 }
 

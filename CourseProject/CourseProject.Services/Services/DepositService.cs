@@ -31,6 +31,7 @@ namespace CourseProject.Services.Services
 
         #endregion
 
+
         #region [DepositService's members]
 
         public Deposit CreateDeposit(double startSummary, int customerId, int currencyId, int optionDepositId)
