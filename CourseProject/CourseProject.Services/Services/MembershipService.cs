@@ -67,10 +67,10 @@ namespace CourseProject.Services.Services
         {
             var customerRepository = _factoryOfRepositories.GetCustomerRepository();
             var customer = customerRepository.Find(e => e.PassportData == passportData);
-            if (customer == null)
-            {
-                throw new MembershipServiceException("Customer doesn't exist.");
-            }
+            //if (customer == null)
+            //{
+            //    throw new MembershipServiceException("Customer doesn't exist.");
+            //}
             return customer;
         }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data.Entity;
+using System.Linq;
 using CourseProject.Core.Entities;
 using CourseProject.EFData;
 using CourseProject.EFData.DBContext;
@@ -16,8 +17,9 @@ namespace Tests
         public void ShouldAddCurrencyToDatabase()
         {
             BankContext context = new BankContext("TestDB");
+            var beginTransaction = context.Database.BeginTransaction();
             Database.SetInitializer(new DropCreateDatabaseAlways<BankContext>());
-            context.Currencies.Add(new Currency() { Value = "USD" });
+            //context.Currencies.Add(new Currency() { Value = "USD" });
             var customer = new Customer()
             {
                 Name = "a",
@@ -50,8 +52,15 @@ namespace Tests
             BankContext context1 = new BankContext("TestDB");
             var transaction = context1.Database.BeginTransaction();
             Customer find = context1.Customers.Find(customer.Id);
+            context1.Currencies.Add(new Currency() {Value = "usd"});
+            context1.SaveChanges();
             transaction.Commit();
             context1.Dispose();
+
+
+            var currency = context.Currencies.SingleOrDefault(e => e.Value=="usd");
+
+            beginTransaction.Commit();
             context.Dispose();
         }
     }

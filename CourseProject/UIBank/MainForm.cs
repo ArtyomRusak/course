@@ -17,16 +17,9 @@ namespace UIBank
 {
     public partial class MainForm : Form
     {
-        private BankContext _context;
-        private readonly UnitOfWork _unitOfWork;
-        private readonly MembershipService _service;
-
         public MainForm()
         {
             InitializeComponent();
-            _context = new BankContext(Resources.ConnectionString);
-            _unitOfWork = new UnitOfWork(_context);
-            _service = new MembershipService(_unitOfWork, _unitOfWork);
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -48,6 +41,9 @@ namespace UIBank
             this._lblDeposits.Text = String.Format("Count of deposits - {0}", countOfDeposits.ToString());
             this._lblAccounts.Text = String.Format("Count of accounts - {0}", countOfAccounts.ToString());
 
+            _dgvCustomers.DataSource = null;
+            _tbxFindCustomer.Text = "";
+
             this._cbxSelect.SelectedIndex = 0;
             unitOfWork.Dispose();
         }
@@ -59,14 +55,18 @@ namespace UIBank
                 MessageBox.Show(Resources.FindCustomerError);
                 return;
             }
+            var context = new BankContext(Resources.ConnectionString);
+            UnitOfWork unitOfWork = new UnitOfWork(context);
+            var membershipService = new MembershipService(unitOfWork, unitOfWork);
             switch (_cbxSelect.SelectedIndex)
             {
                 case 0:
                     {
                         try
                         {
-                            var data = _service.GetCustomerByPassportData(_tbxFindCustomer.Text);
-                            _customerView.DataSource = new List<Customer> { data };
+                            var data = membershipService.GetCustomerByPassportData(_tbxFindCustomer.Text);
+                            _dgvCustomers.DataSource = new List<Customer> { data };
+                            unitOfWork.Dispose();
                         }
                         catch (MembershipServiceException ex)
                         {
@@ -79,8 +79,9 @@ namespace UIBank
                     {
                         try
                         {
-                            var data = _service.GetCustomersBySurname(_tbxFindCustomer.Text);
-                            _customerView.DataSource = data;
+                            var data = membershipService.GetCustomersBySurname(_tbxFindCustomer.Text);
+                            _dgvCustomers.DataSource = data;
+                            unitOfWork.Dispose();
                         }
                         catch (MembershipServiceException ex)
                         {
@@ -102,6 +103,21 @@ namespace UIBank
         private void _cbxSelect_SelectedIndexChanged(object sender, EventArgs e)
         {
             _tbxFindCustomer.Clear();
+        }
+
+        private void _customerView_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            int customerId = int.Parse(_dgvCustomers.Rows[e.RowIndex].Cells[0].Value.ToString());
+            ViewCustomerForm form = new ViewCustomerForm(customerId);
+            form.ShowDialog();
+            this.MainForm_Load(null, null);
+        }
+
+        private void _btnAddAccount_Click(object sender, EventArgs e)
+        {
+            AddAccountForm form = new AddAccountForm();
+            form.ShowDialog();
+            this.MainForm_Load(null, null);
         }
     }
 }

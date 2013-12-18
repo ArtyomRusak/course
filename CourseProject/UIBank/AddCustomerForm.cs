@@ -15,11 +15,19 @@ namespace UIBank
 {
     public partial class AddCustomerForm : Form
     {
-
+        private string _passportData;
 
         public AddCustomerForm()
         {
             InitializeComponent();
+        }
+
+        public AddCustomerForm(string passportData)
+        {
+            InitializeComponent();
+            _passportData = passportData;
+            _tbxPassportData.Text = passportData;
+            _tbxPassportData.ReadOnly = true;
         }
 
         private void _btnAddCustomer_Click(object sender, EventArgs e)
@@ -28,6 +36,11 @@ namespace UIBank
             if (textBoxs.Any(textBox => textBox.Text == ""))
             {
                 MessageBox.Show(Resources.EmptyFields);
+                return;
+            }
+            if (_dtmpBirthDate.Value > DateTime.Now)
+            {
+                MessageBox.Show(Resources.WrongBirthDateValue);
                 return;
             }
 

@@ -95,5 +95,14 @@ namespace UIBank {
                 return ResourceManager.GetString("FindCustomerError", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wrong value of birth date..
+        /// </summary>
+        internal static string WrongBirthDateValue {
+            get {
+                return ResourceManager.GetString("WrongBirthDateValue", resourceCulture);
+            }
+        }
     }
 }

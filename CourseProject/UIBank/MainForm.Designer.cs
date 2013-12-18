@@ -13,7 +13,6 @@
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
-            _unitOfWork.Dispose();
             if (disposing && (components != null))
             {
                 components.Dispose();
@@ -39,7 +38,7 @@
             this._lblDeposits = new System.Windows.Forms.Label();
             this._lblCustomers = new System.Windows.Forms.Label();
             this.@__findCustomer = new System.Windows.Forms.Button();
-            this._customerView = new System.Windows.Forms.DataGridView();
+            this._dgvCustomers = new System.Windows.Forms.DataGridView();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.surnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,7 +50,7 @@
             this.customerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this._tbxFindCustomer = new System.Windows.Forms.TextBox();
             this._cbxSelect = new System.Windows.Forms.ComboBox();
-            ((System.ComponentModel.ISupportInitialize)(this._customerView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this._dgvCustomers)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -64,6 +63,7 @@
             this._btnAddAccount.TabIndex = 0;
             this._btnAddAccount.Text = "Добавить счёт";
             this._btnAddAccount.UseVisualStyleBackColor = true;
+            this._btnAddAccount.Click += new System.EventHandler(this._btnAddAccount_Click);
             // 
             // _btnAddDeposit
             // 
@@ -88,7 +88,7 @@
             // _btnAddCustomer
             // 
             this._btnAddCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this._btnAddCustomer.Location = new System.Drawing.Point(421, 73);
+            this._btnAddCustomer.Location = new System.Drawing.Point(452, 56);
             this._btnAddCustomer.Name = "_btnAddCustomer";
             this._btnAddCustomer.Size = new System.Drawing.Size(161, 54);
             this._btnAddCustomer.TabIndex = 3;
@@ -143,13 +143,13 @@
             this.@__findCustomer.UseVisualStyleBackColor = true;
             this.@__findCustomer.Click += new System.EventHandler(this.@__findCustomer_Click);
             // 
-            // _customerView
+            // _dgvCustomers
             // 
-            this._customerView.AllowUserToAddRows = false;
-            this._customerView.AllowUserToDeleteRows = false;
-            this._customerView.AutoGenerateColumns = false;
-            this._customerView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this._customerView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this._dgvCustomers.AllowUserToAddRows = false;
+            this._dgvCustomers.AllowUserToDeleteRows = false;
+            this._dgvCustomers.AutoGenerateColumns = false;
+            this._dgvCustomers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this._dgvCustomers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idDataGridViewTextBoxColumn,
             this.nameDataGridViewTextBoxColumn,
             this.surnameDataGridViewTextBoxColumn,
@@ -158,13 +158,15 @@
             this.addressDataGridViewTextBoxColumn,
             this.ageDataGridViewTextBoxColumn,
             this.passportDataDataGridViewTextBoxColumn});
-            this._customerView.DataSource = this.customerBindingSource;
-            this._customerView.Location = new System.Drawing.Point(145, 386);
-            this._customerView.MultiSelect = false;
-            this._customerView.Name = "_customerView";
-            this._customerView.ReadOnly = true;
-            this._customerView.Size = new System.Drawing.Size(732, 238);
-            this._customerView.TabIndex = 9;
+            this._dgvCustomers.DataSource = this.customerBindingSource;
+            this._dgvCustomers.Location = new System.Drawing.Point(145, 386);
+            this._dgvCustomers.MultiSelect = false;
+            this._dgvCustomers.Name = "_dgvCustomers";
+            this._dgvCustomers.ReadOnly = true;
+            this._dgvCustomers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this._dgvCustomers.Size = new System.Drawing.Size(732, 238);
+            this._dgvCustomers.TabIndex = 9;
+            this._dgvCustomers.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this._customerView_CellMouseDoubleClick);
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -259,7 +261,7 @@
             this.ClientSize = new System.Drawing.Size(1016, 655);
             this.Controls.Add(this._cbxSelect);
             this.Controls.Add(this._tbxFindCustomer);
-            this.Controls.Add(this._customerView);
+            this.Controls.Add(this._dgvCustomers);
             this.Controls.Add(this.@__findCustomer);
             this.Controls.Add(this._lblCustomers);
             this.Controls.Add(this._lblDeposits);
@@ -272,7 +274,7 @@
             this.Name = "MainForm";
             this.Text = "MainFrame";
             this.Load += new System.EventHandler(this.MainForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this._customerView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._dgvCustomers)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -290,7 +292,7 @@
         private System.Windows.Forms.Label _lblDeposits;
         private System.Windows.Forms.Label _lblCustomers;
         private System.Windows.Forms.Button __findCustomer;
-        private System.Windows.Forms.DataGridView _customerView;
+        private System.Windows.Forms.DataGridView _dgvCustomers;
         private System.Windows.Forms.TextBox _tbxFindCustomer;
         private System.Windows.Forms.ComboBox _cbxSelect;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
