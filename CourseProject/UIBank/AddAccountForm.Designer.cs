@@ -34,6 +34,7 @@
             this._nudSummary = new System.Windows.Forms.NumericUpDown();
             this._btnCreate = new System.Windows.Forms.Button();
             this._cbxCurrencies = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this._nudSummary)).BeginInit();
             this.SuspendLayout();
             // 
@@ -69,14 +70,14 @@
             // 
             this._nudSummary.DecimalPlaces = 2;
             this._nudSummary.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this._nudSummary.Location = new System.Drawing.Point(240, 68);
+            this._nudSummary.Location = new System.Drawing.Point(204, 67);
             this._nudSummary.Maximum = new decimal(new int[] {
             1215752192,
             23,
             0,
             0});
             this._nudSummary.Name = "_nudSummary";
-            this._nudSummary.Size = new System.Drawing.Size(78, 24);
+            this._nudSummary.Size = new System.Drawing.Size(150, 24);
             this._nudSummary.TabIndex = 4;
             // 
             // _btnCreate
@@ -95,16 +96,27 @@
             this._cbxCurrencies.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this._cbxCurrencies.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this._cbxCurrencies.FormattingEnabled = true;
-            this._cbxCurrencies.Location = new System.Drawing.Point(372, 68);
+            this._cbxCurrencies.Location = new System.Drawing.Point(401, 67);
             this._cbxCurrencies.Name = "_cbxCurrencies";
             this._cbxCurrencies.Size = new System.Drawing.Size(90, 24);
             this._cbxCurrencies.TabIndex = 6;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(415, 29);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(72, 20);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Currency";
             // 
             // AddAccountForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(535, 212);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this._cbxCurrencies);
             this.Controls.Add(this._btnCreate);
             this.Controls.Add(this._nudSummary);
@@ -129,5 +141,6 @@
         private System.Windows.Forms.NumericUpDown _nudSummary;
         private System.Windows.Forms.Button _btnCreate;
         private System.Windows.Forms.ComboBox _cbxCurrencies;
+        private System.Windows.Forms.Label label1;
     }
 }

@@ -74,6 +74,7 @@
             this._btnAddDeposit.TabIndex = 1;
             this._btnAddDeposit.Text = "Добавить вклад";
             this._btnAddDeposit.UseVisualStyleBackColor = true;
+            this._btnAddDeposit.Click += new System.EventHandler(this._btnAddDeposit_Click);
             // 
             // _btnAddLoan
             // 
@@ -84,6 +85,7 @@
             this._btnAddLoan.TabIndex = 2;
             this._btnAddLoan.Text = "Сделать займ";
             this._btnAddLoan.UseVisualStyleBackColor = true;
+            this._btnAddLoan.Click += new System.EventHandler(this._btnAddLoan_Click);
             // 
             // _btnAddCustomer
             // 
@@ -245,8 +247,8 @@
             this._cbxSelect.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this._cbxSelect.FormattingEnabled = true;
             this._cbxSelect.Items.AddRange(new object[] {
-            "Номер паспорта",
-            "Фамилия"});
+            "Фамилия",
+            "Номер паспорта"});
             this._cbxSelect.Location = new System.Drawing.Point(606, 341);
             this._cbxSelect.Name = "_cbxSelect";
             this._cbxSelect.Size = new System.Drawing.Size(147, 24);

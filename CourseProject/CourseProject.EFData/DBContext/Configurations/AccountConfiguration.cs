@@ -11,6 +11,7 @@ namespace CourseProject.EFData.DBContext.Configurations
             Property(e => e.Summary).IsRequired();
             HasRequired(e => e.Customer).WithMany(e => e.Accounts).HasForeignKey(e => e.CustomerId);
             HasRequired(e => e.Currency).WithMany().HasForeignKey(e => e.CurrencyId);
+            //HasRequired(e => e.Currency).WithOptional().Map(x => x.MapKey("CurrencyId"));
         }
     }
 }

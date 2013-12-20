@@ -64,8 +64,8 @@ namespace UIBank
                     {
                         try
                         {
-                            var data = membershipService.GetCustomerByPassportData(_tbxFindCustomer.Text);
-                            _dgvCustomers.DataSource = new List<Customer> { data };
+                            var data = membershipService.GetCustomersBySurname(_tbxFindCustomer.Text);
+                            _dgvCustomers.DataSource = data;
                             unitOfWork.Dispose();
                         }
                         catch (MembershipServiceException ex)
@@ -79,8 +79,8 @@ namespace UIBank
                     {
                         try
                         {
-                            var data = membershipService.GetCustomersBySurname(_tbxFindCustomer.Text);
-                            _dgvCustomers.DataSource = data;
+                            var data = membershipService.GetCustomerByPassportData(_tbxFindCustomer.Text);
+                            _dgvCustomers.DataSource = new List<Customer> { data };
                             unitOfWork.Dispose();
                         }
                         catch (MembershipServiceException ex)
@@ -116,6 +116,20 @@ namespace UIBank
         private void _btnAddAccount_Click(object sender, EventArgs e)
         {
             AddAccountForm form = new AddAccountForm();
+            form.ShowDialog();
+            this.MainForm_Load(null, null);
+        }
+
+        private void _btnAddDeposit_Click(object sender, EventArgs e)
+        {
+            AddDepositForm form = new AddDepositForm();
+            form.ShowDialog();
+            this.MainForm_Load(null, null);
+        }
+
+        private void _btnAddLoan_Click(object sender, EventArgs e)
+        {
+            AddLoanForm form = new AddLoanForm();
             form.ShowDialog();
             this.MainForm_Load(null, null);
         }

@@ -61,6 +61,8 @@
     <Compile Include="Exceptions\HistoryServiceException.cs" />
     <Compile Include="Exceptions\LoanServiceException.cs" />
     <Compile Include="Exceptions\MembershipServiceException.cs" />
+    <Compile Include="Exceptions\OptionDepositServiceException.cs" />
+    <Compile Include="Exceptions\OptionLoanServiceException.cs" />
     <Compile Include="Exceptions\ServiceException.cs" />
     <Compile Include="IService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -70,6 +72,8 @@
     <Compile Include="Services\HistoryService.cs" />
     <Compile Include="Services\LoanService.cs" />
     <Compile Include="Services\MembershipService.cs" />
+    <Compile Include="Services\OptionDepositService.cs" />
+    <Compile Include="Services\OptionLoanService.cs" />
     <Compile Include="Validators\CustomerValidator.cs" />
     <Compile Include="Validators\IValidate.cs" />
   </ItemGroup>

@@ -52,5 +52,26 @@ namespace UIBank
 
             unitOfWork.Dispose();
         }
+
+        private void _btnAddAccount_Click(object sender, EventArgs e)
+        {
+            AddAccountForm form = new AddAccountForm(_customer.PassportData);
+            form.ShowDialog();
+            this.ViewCustomerForm_Load(null, null);
+        }
+
+        private void _btnAddLoan_Click(object sender, EventArgs e)
+        {
+            AddLoanForm form = new AddLoanForm(_customer.PassportData);
+            form.ShowDialog();
+            this.ViewCustomerForm_Load(null, null);
+        }
+
+        private void _btnAddDeposit_Click(object sender, EventArgs e)
+        {
+            AddDepositForm form = new AddDepositForm(_customer.PassportData);
+            form.ShowDialog();
+            this.ViewCustomerForm_Load(null, null);
+        }
     }
 }

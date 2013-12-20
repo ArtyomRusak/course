@@ -23,6 +23,9 @@ namespace CourseProject.EFData.DBContext.Initializers
                 context.Database.Delete();
             }
             context.Database.Create();
+            context.Database.ExecuteSqlCommand("ALTER TABLE Customers ADD CONSTRAINT PassportDataUnique UNIQUE (PassportData)");
+            context.Database.ExecuteSqlCommand("ALTER TABLE OptionDeposits ADD CONSTRAINT NameDataUnique UNIQUE (Name)");
+            context.Database.ExecuteSqlCommand("ALTER TABLE Currencies ADD CONSTRAINT ValueDataUnique UNIQUE (Value)");
             try
             {
                 Seed(context);

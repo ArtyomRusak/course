@@ -17,8 +17,8 @@ namespace Tests
         public void ShouldAddCurrencyToDatabase()
         {
             BankContext context = new BankContext("TestDB");
+            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<BankContext>());
             var beginTransaction = context.Database.BeginTransaction();
-            Database.SetInitializer(new DropCreateDatabaseAlways<BankContext>());
             //context.Currencies.Add(new Currency() { Value = "USD" });
             var customer = new Customer()
             {
@@ -53,6 +53,14 @@ namespace Tests
             var transaction = context1.Database.BeginTransaction();
             Customer find = context1.Customers.Find(customer.Id);
             context1.Currencies.Add(new Currency() {Value = "usd"});
+            var account = new Account
+            {
+                CreateDate = DateTime.Now,
+                CurrencyId = 2,
+                CustomerId = 1,
+                Summary = 123
+            };
+            context1.Accounts.Add(account);
             context1.SaveChanges();
             transaction.Commit();
             context1.Dispose();

@@ -10,26 +10,23 @@ using System.Windows.Forms;
 using CourseProject.Core.Entities;
 using CourseProject.EFData;
 using CourseProject.EFData.DBContext;
-using CourseProject.Services;
 using CourseProject.Services.Services;
 
 namespace UIBank
 {
-    public partial class AddAccountForm : Form
+    public partial class AddDepositForm : Form
     {
         private BankContext _context;
         private readonly UnitOfWork _unitOfWork;
-        private readonly CurrencyService _currencyService;
 
-        public AddAccountForm()
+        public AddDepositForm()
         {
             InitializeComponent();
             _context = new BankContext(Resources.ConnectionString);
             _unitOfWork = new UnitOfWork(_context);
-            _currencyService = new CurrencyService(_unitOfWork, _unitOfWork);
         }
 
-        public AddAccountForm(string passportData)
+        public AddDepositForm(string passportData)
         {
             InitializeComponent();
             _context = new BankContext(Resources.ConnectionString);
@@ -38,14 +35,18 @@ namespace UIBank
             _tbxPassportData.ReadOnly = true;
         }
 
-        private void AddAccountForm_Load(object sender, EventArgs e)
+        private void AddDepositForm_Load(object sender, EventArgs e)
         {
-            var currencies = _currencyService.GetCurrencies();
+            var currencyService = new CurrencyService(_unitOfWork, _unitOfWork);
+            var optionDepositService = new OptionDepositService(_unitOfWork, _unitOfWork);
+            var currencies = currencyService.GetCurrencies();
+            var optionDeposits = optionDepositService.GetOptionDeposits();
+
             _cbxCurrencies.Items.AddRange(currencies.Select(w => w.Value).ToArray());
-            _cbxCurrencies.SelectedIndex = 0;
+            _cbxOptionDeposits.Items.AddRange(optionDeposits.Select(w => w.Name).ToArray());
         }
 
-        private void _btnCreate_Click(object sender, EventArgs e)
+        private void _btnCreateDeposit_Click(object sender, EventArgs e)
         {
             if (_tbxPassportData.Text == "")
             {
@@ -53,23 +54,26 @@ namespace UIBank
             }
 
             var membershipService = new MembershipService(_unitOfWork, _unitOfWork);
-            var accountService = new AccountService(_unitOfWork, _unitOfWork);
-            var currency = _currencyService.GetCurrencyByValue(_cbxCurrencies.SelectedItem.ToString());
+            var depositService = new DepositService(_unitOfWork, _unitOfWork);
+            var currencyService = new CurrencyService(_unitOfWork, _unitOfWork);
+            var optionDepositService = new OptionDepositService(_unitOfWork, _unitOfWork);
+            var currency = currencyService.GetCurrencyByValue(_cbxCurrencies.SelectedItem.ToString());
+            var optionDeposit = optionDepositService.GetOptionDepositByName(_cbxOptionDeposits.SelectedItem.ToString());
 
             var customer = membershipService.GetCustomerByPassportData(_tbxPassportData.Text);
             if (customer == null)
             {
-                AddCustomerForm form = new AddCustomerForm(_tbxPassportData.Text);
+                AddCustomerForm form = new AddCustomerForm();
                 form.ShowDialog();
                 customer = membershipService.GetCustomerByPassportData(_tbxPassportData.Text);
             }
 
-            accountService.CreateAccount((double) _nudSummary.Value, customer.Id, currency.Id);
+            depositService.CreateDeposit((double) _nudSummary.Value, customer.Id, currency.Id, optionDeposit.Id);
             _unitOfWork.Dispose();
             this.Close();
         }
 
-        private void AddAccountForm_FormClosing(object sender, FormClosingEventArgs e)
+        private void AddDepositForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             _unitOfWork.Dispose();
         }
