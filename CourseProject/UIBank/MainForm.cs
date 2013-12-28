@@ -17,15 +17,17 @@ namespace UIBank
 {
     public partial class MainForm : Form
     {
+        private readonly BankContext _context;
+
         public MainForm()
         {
             InitializeComponent();
+            _context = new BankContext(Resources.ConnectionString);
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            var context = new BankContext(Resources.ConnectionString);
-            var unitOfWork = new UnitOfWork(context);
+            var unitOfWork = new UnitOfWork(_context);
             var loanService = new LoanService(unitOfWork, unitOfWork);
             var accountService = new AccountService(unitOfWork, unitOfWork);
             var depositService = new DepositService(unitOfWork, unitOfWork);
@@ -45,7 +47,7 @@ namespace UIBank
             _tbxFindCustomer.Text = "";
 
             this._cbxSelect.SelectedIndex = 0;
-            unitOfWork.Dispose();
+            unitOfWork.Commit();
         }
 
         private void __findCustomer_Click(object sender, EventArgs e)
@@ -55,9 +57,10 @@ namespace UIBank
                 MessageBox.Show(Resources.FindCustomerError);
                 return;
             }
-            var context = new BankContext(Resources.ConnectionString);
-            UnitOfWork unitOfWork = new UnitOfWork(context);
+
+            var unitOfWork = new UnitOfWork(_context);
             var membershipService = new MembershipService(unitOfWork, unitOfWork);
+
             switch (_cbxSelect.SelectedIndex)
             {
                 case 0:
@@ -66,7 +69,7 @@ namespace UIBank
                         {
                             var data = membershipService.GetCustomersBySurname(_tbxFindCustomer.Text);
                             _dgvCustomers.DataSource = data;
-                            unitOfWork.Dispose();
+                            unitOfWork.Commit();
                         }
                         catch (MembershipServiceException ex)
                         {
@@ -81,7 +84,7 @@ namespace UIBank
                         {
                             var data = membershipService.GetCustomerByPassportData(_tbxFindCustomer.Text);
                             _dgvCustomers.DataSource = new List<Customer> { data };
-                            unitOfWork.Dispose();
+                            unitOfWork.Commit();
                         }
                         catch (MembershipServiceException ex)
                         {
@@ -132,6 +135,11 @@ namespace UIBank
             AddLoanForm form = new AddLoanForm();
             form.ShowDialog();
             this.MainForm_Load(null, null);
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            _context.Dispose();
         }
     }
 }

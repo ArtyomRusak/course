@@ -16,15 +16,18 @@ namespace UIBank
     public partial class AddCustomerForm : Form
     {
         private string _passportData;
+        private readonly BankContext _context;
 
         public AddCustomerForm()
         {
             InitializeComponent();
+            _context = new BankContext(Resources.ConnectionString);
         }
 
         public AddCustomerForm(string passportData)
         {
             InitializeComponent();
+            _context = new BankContext(Resources.ConnectionString);
             _passportData = passportData;
             _tbxPassportData.Text = passportData;
             _tbxPassportData.ReadOnly = true;
@@ -44,14 +47,14 @@ namespace UIBank
                 return;
             }
 
-            var context = new BankContext(Resources.ConnectionString);
-            UnitOfWork unitOfWork = new UnitOfWork(context);
-            MembershipService membershipService = new MembershipService(unitOfWork, unitOfWork);
+            var unitOfWork = new UnitOfWork(_context);
+            var membershipService = new MembershipService(unitOfWork, unitOfWork);
+
             try
             {
                 var customer = membershipService.CreateCustomer(_tbxName.Text, _tbxSurname.Text, _tbxPatronymic.Text,
                     _tbxPassportData.Text, _tbxAddress.Text, _dtmpBirthDate.Value);
-                unitOfWork.Dispose();
+                unitOfWork.Commit();
                 MessageBox.Show(Resources.CustomerAdded);
                 this.Close();
             }
@@ -60,6 +63,11 @@ namespace UIBank
                 MessageBox.Show(ex.Message);
                 return;
             }
+        }
+
+        private void AddCustomerForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            _context.Dispose();
         }
     }
 }

@@ -52,13 +52,12 @@
             this.currencyDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.optionDepositDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.depositBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.currencyBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.accountBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this._dgvAccounts = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.summaryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.createDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.currencyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.accountBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this._btnAddAccount = new System.Windows.Forms.Button();
             this._btnAddLoan = new System.Windows.Forms.Button();
             this._btnAddDeposit = new System.Windows.Forms.Button();
@@ -66,9 +65,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.loanBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._dgvDeposits)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.depositBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.currencyBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.accountBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._dgvAccounts)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.accountBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // _lblFIO
@@ -115,7 +113,7 @@
             // 
             this._lblAccounts.AutoSize = true;
             this._lblAccounts.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this._lblAccounts.Location = new System.Drawing.Point(508, 13);
+            this._lblAccounts.Location = new System.Drawing.Point(504, 13);
             this._lblAccounts.Name = "_lblAccounts";
             this._lblAccounts.Size = new System.Drawing.Size(76, 20);
             this._lblAccounts.TabIndex = 4;
@@ -145,10 +143,12 @@
             this.currencyDataGridViewTextBoxColumn1,
             this.optionLoanDataGridViewTextBoxColumn});
             this._dgvLoans.DataSource = this.loanBindingSource;
-            this._dgvLoans.Location = new System.Drawing.Point(254, 258);
+            this._dgvLoans.Location = new System.Drawing.Point(243, 258);
+            this._dgvLoans.MultiSelect = false;
             this._dgvLoans.Name = "_dgvLoans";
             this._dgvLoans.ReadOnly = true;
-            this._dgvLoans.Size = new System.Drawing.Size(553, 153);
+            this._dgvLoans.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this._dgvLoans.Size = new System.Drawing.Size(564, 153);
             this._dgvLoans.TabIndex = 7;
             // 
             // dataGridViewTextBoxColumn2
@@ -157,7 +157,7 @@
             this.dataGridViewTextBoxColumn2.HeaderText = "Id";
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.Width = 30;
+            this.dataGridViewTextBoxColumn2.Width = 50;
             // 
             // openingSummaryDataGridViewTextBoxColumn
             // 
@@ -223,10 +223,12 @@
             this.currencyDataGridViewTextBoxColumn2,
             this.optionDepositDataGridViewTextBoxColumn});
             this._dgvDeposits.DataSource = this.depositBindingSource;
-            this._dgvDeposits.Location = new System.Drawing.Point(254, 457);
+            this._dgvDeposits.Location = new System.Drawing.Point(243, 457);
+            this._dgvDeposits.MultiSelect = false;
             this._dgvDeposits.Name = "_dgvDeposits";
             this._dgvDeposits.ReadOnly = true;
-            this._dgvDeposits.Size = new System.Drawing.Size(553, 150);
+            this._dgvDeposits.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this._dgvDeposits.Size = new System.Drawing.Size(564, 150);
             this._dgvDeposits.TabIndex = 9;
             // 
             // dataGridViewTextBoxColumn3
@@ -235,7 +237,7 @@
             this.dataGridViewTextBoxColumn3.HeaderText = "Id";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            this.dataGridViewTextBoxColumn3.Width = 30;
+            this.dataGridViewTextBoxColumn3.Width = 50;
             // 
             // openingSummaryDataGridViewTextBoxColumn1
             // 
@@ -277,14 +279,6 @@
             // 
             this.depositBindingSource.DataSource = typeof(CourseProject.Core.Entities.Deposit);
             // 
-            // currencyBindingSource
-            // 
-            this.currencyBindingSource.DataSource = typeof(CourseProject.Core.Entities.Currency);
-            // 
-            // accountBindingSource
-            // 
-            this.accountBindingSource.DataSource = typeof(CourseProject.Core.Entities.Account);
-            // 
             // _dgvAccounts
             // 
             this._dgvAccounts.AllowUserToAddRows = false;
@@ -298,10 +292,13 @@
             this.currencyDataGridViewTextBoxColumn});
             this._dgvAccounts.DataSource = this.accountBindingSource;
             this._dgvAccounts.Location = new System.Drawing.Point(344, 47);
+            this._dgvAccounts.MultiSelect = false;
             this._dgvAccounts.Name = "_dgvAccounts";
             this._dgvAccounts.ReadOnly = true;
+            this._dgvAccounts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this._dgvAccounts.Size = new System.Drawing.Size(403, 150);
             this._dgvAccounts.TabIndex = 10;
+            this._dgvAccounts.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this._dgvAccounts_CellDoubleClick);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -309,7 +306,7 @@
             this.dataGridViewTextBoxColumn1.HeaderText = "Id";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 50;
+            this.dataGridViewTextBoxColumn1.Width = 60;
             // 
             // summaryDataGridViewTextBoxColumn
             // 
@@ -332,10 +329,14 @@
             this.currencyDataGridViewTextBoxColumn.Name = "currencyDataGridViewTextBoxColumn";
             this.currencyDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // accountBindingSource
+            // 
+            this.accountBindingSource.DataSource = typeof(CourseProject.Core.Entities.Account);
+            // 
             // _btnAddAccount
             // 
             this._btnAddAccount.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this._btnAddAccount.Location = new System.Drawing.Point(590, 4);
+            this._btnAddAccount.Location = new System.Drawing.Point(580, 0);
             this._btnAddAccount.Name = "_btnAddAccount";
             this._btnAddAccount.Size = new System.Drawing.Size(51, 37);
             this._btnAddAccount.TabIndex = 11;
@@ -385,14 +386,14 @@
             this.Controls.Add(this._lblFIO);
             this.Name = "ViewCustomerForm";
             this.Text = "ViewCustomerForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ViewCustomerForm_FormClosing);
             this.Load += new System.EventHandler(this.ViewCustomerForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this._dgvLoans)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.loanBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this._dgvDeposits)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.depositBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.currencyBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.accountBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this._dgvAccounts)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.accountBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -412,29 +413,28 @@
         private System.Windows.Forms.Label _lblDeposits;
         private System.Windows.Forms.DataGridView _dgvDeposits;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn2;
-        private System.Windows.Forms.BindingSource currencyBindingSource;
         private System.Windows.Forms.BindingSource accountBindingSource;
         private System.Windows.Forms.DataGridView _dgvAccounts;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn summaryDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn createDateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn currencyDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource loanBindingSource;
+        private System.Windows.Forms.BindingSource depositBindingSource;
+        private System.Windows.Forms.Button _btnAddAccount;
+        private System.Windows.Forms.Button _btnAddLoan;
+        private System.Windows.Forms.Button _btnAddDeposit;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn openingSummaryDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn summaryDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn createDateDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn currencyDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn optionLoanDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource loanBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn openingSummaryDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn summaryDataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn createDateDataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn currencyDataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn optionDepositDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource depositBindingSource;
-        private System.Windows.Forms.Button _btnAddAccount;
-        private System.Windows.Forms.Button _btnAddLoan;
-        private System.Windows.Forms.Button _btnAddDeposit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn summaryDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn createDateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn currencyDataGridViewTextBoxColumn;
     }
 }

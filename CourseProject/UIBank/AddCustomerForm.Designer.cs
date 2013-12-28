@@ -181,6 +181,7 @@
             this.Controls.Add(this._lblName);
             this.Name = "AddCustomerForm";
             this.Text = "Adding customer";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AddCustomerForm_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

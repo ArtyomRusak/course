@@ -7,7 +7,7 @@ namespace CourseProject.EFData.DBContext.Configurations
     {
         public CurrencyConfiguration()
         {
-            Property(e => e.Value).IsRequired();
+            Property(e => e.Value).HasMaxLength(5).IsRequired();
         }
     }
 }

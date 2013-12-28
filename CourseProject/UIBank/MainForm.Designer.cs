@@ -37,7 +37,7 @@
             this._lblLoans = new System.Windows.Forms.Label();
             this._lblDeposits = new System.Windows.Forms.Label();
             this._lblCustomers = new System.Windows.Forms.Label();
-            this.@__findCustomer = new System.Windows.Forms.Button();
+            this._btnFindCustomer = new System.Windows.Forms.Button();
             this._dgvCustomers = new System.Windows.Forms.DataGridView();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -134,16 +134,16 @@
             this._lblCustomers.TabIndex = 7;
             this._lblCustomers.Text = "label4";
             // 
-            // __findCustomer
+            // _btnFindCustomer
             // 
-            this.@__findCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.@__findCustomer.Location = new System.Drawing.Point(293, 332);
-            this.@__findCustomer.Name = "__findCustomer";
-            this.@__findCustomer.Size = new System.Drawing.Size(135, 37);
-            this.@__findCustomer.TabIndex = 8;
-            this.@__findCustomer.Text = "Найти";
-            this.@__findCustomer.UseVisualStyleBackColor = true;
-            this.@__findCustomer.Click += new System.EventHandler(this.@__findCustomer_Click);
+            this._btnFindCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this._btnFindCustomer.Location = new System.Drawing.Point(293, 332);
+            this._btnFindCustomer.Name = "_btnFindCustomer";
+            this._btnFindCustomer.Size = new System.Drawing.Size(135, 37);
+            this._btnFindCustomer.TabIndex = 8;
+            this._btnFindCustomer.Text = "Найти";
+            this._btnFindCustomer.UseVisualStyleBackColor = true;
+            this._btnFindCustomer.Click += new System.EventHandler(this.@__findCustomer_Click);
             // 
             // _dgvCustomers
             // 
@@ -247,8 +247,8 @@
             this._cbxSelect.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this._cbxSelect.FormattingEnabled = true;
             this._cbxSelect.Items.AddRange(new object[] {
-            "Фамилия",
-            "Номер паспорта"});
+            "Surname",
+            "PassportData"});
             this._cbxSelect.Location = new System.Drawing.Point(606, 341);
             this._cbxSelect.Name = "_cbxSelect";
             this._cbxSelect.Size = new System.Drawing.Size(147, 24);
@@ -257,14 +257,14 @@
             // 
             // MainForm
             // 
-            this.AcceptButton = this.@__findCustomer;
+            this.AcceptButton = this._btnFindCustomer;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1016, 655);
             this.Controls.Add(this._cbxSelect);
             this.Controls.Add(this._tbxFindCustomer);
             this.Controls.Add(this._dgvCustomers);
-            this.Controls.Add(this.@__findCustomer);
+            this.Controls.Add(this._btnFindCustomer);
             this.Controls.Add(this._lblCustomers);
             this.Controls.Add(this._lblDeposits);
             this.Controls.Add(this._lblLoans);
@@ -275,6 +275,7 @@
             this.Controls.Add(this._btnAddAccount);
             this.Name = "MainForm";
             this.Text = "MainFrame";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this._dgvCustomers)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).EndInit();
@@ -293,7 +294,7 @@
         private System.Windows.Forms.Label _lblLoans;
         private System.Windows.Forms.Label _lblDeposits;
         private System.Windows.Forms.Label _lblCustomers;
-        private System.Windows.Forms.Button __findCustomer;
+        private System.Windows.Forms.Button _btnFindCustomer;
         private System.Windows.Forms.DataGridView _dgvCustomers;
         private System.Windows.Forms.TextBox _tbxFindCustomer;
         private System.Windows.Forms.ComboBox _cbxSelect;

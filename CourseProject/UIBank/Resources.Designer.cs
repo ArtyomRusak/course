@@ -90,9 +90,36 @@ namespace UIBank {
         /// <summary>
         ///   Looks up a localized string similar to Field can not be empty..
         /// </summary>
+        internal static string FindAccountError {
+            get {
+                return ResourceManager.GetString("FindAccountError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Field can not be empty..
+        /// </summary>
         internal static string FindCustomerError {
             get {
                 return ResourceManager.GetString("FindCustomerError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Can not take this summary from account..
+        /// </summary>
+        internal static string LowCashError {
+            get {
+                return ResourceManager.GetString("LowCashError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exception occured. Transaction is rolled back..
+        /// </summary>
+        internal static string TransactionRollback {
+            get {
+                return ResourceManager.GetString("TransactionRollback", resourceCulture);
             }
         }
         

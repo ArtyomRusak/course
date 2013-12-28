@@ -1,4 +1,5 @@
 ﻿using System;
+using CourseProject.Infrastructure.Guard.Validation;
 
 namespace CourseProject.Core.Entities
 {
@@ -8,11 +9,11 @@ namespace CourseProject.Core.Entities
         public double Summary { get; set; }
         public double OpeningSummary { get; set; }
         public DateTime CreateDate { get; set; }
-        public Customer Customer { get; set; }
+        public virtual Customer Customer { get; set; }
         public int CustomerId { get; set; }
-        public Currency Currency { get; set; }
+        public virtual Currency Currency { get; set; }
         public int CurrencyId { get; set; }
-        public OptionDeposit OptionDeposit { get; set; }
+        public virtual OptionDeposit OptionDeposit { get; set; }
         public int OptionDepositId { get; set; }
     }
 }

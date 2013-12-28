@@ -16,7 +16,7 @@ namespace UIBank
 {
     public partial class AddDepositForm : Form
     {
-        private BankContext _context;
+        private readonly BankContext _context;
         private readonly UnitOfWork _unitOfWork;
 
         public AddDepositForm()
@@ -63,19 +63,24 @@ namespace UIBank
             var customer = membershipService.GetCustomerByPassportData(_tbxPassportData.Text);
             if (customer == null)
             {
-                AddCustomerForm form = new AddCustomerForm();
+                AddCustomerForm form = new AddCustomerForm(_tbxPassportData.Text);
                 form.ShowDialog();
                 customer = membershipService.GetCustomerByPassportData(_tbxPassportData.Text);
+                if (customer == null)
+                {
+                    MessageBox.Show("Try one more time!");
+                    return;
+                }
             }
 
             depositService.CreateDeposit((double) _nudSummary.Value, customer.Id, currency.Id, optionDeposit.Id);
-            _unitOfWork.Dispose();
+            _unitOfWork.Commit();
             this.Close();
         }
 
         private void AddDepositForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            _unitOfWork.Dispose();
+            _context.Dispose();
         }
     }
 }

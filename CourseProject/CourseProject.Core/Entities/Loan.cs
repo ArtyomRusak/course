@@ -8,11 +8,11 @@ namespace CourseProject.Core.Entities
         public double Summary { get; set; }
         public double OpeningSummary { get; set; }
         public DateTime CreateDate { get; set; }
-        public Customer Customer { get; set; }
+        public virtual Customer Customer { get; set; }
         public int CustomerId { get; set; }
-        public Currency Currency { get; set; }
+        public virtual Currency Currency { get; set; }
         public int CurrencyId { get; set; }
-        public OptionLoan OptionLoan { get; set; }
+        public virtual OptionLoan OptionLoan { get; set; }
         public int OptionLoanId { get; set; }
     }
 }

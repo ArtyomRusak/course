@@ -149,6 +149,7 @@
             this.Controls.Add(this._tbxPassportData);
             this.Name = "AddLoanForm";
             this.Text = "AddLoanForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AddLoanForm_FormClosing);
             this.Load += new System.EventHandler(this.AddLoanForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this._nudSummary)).EndInit();
             this.ResumeLayout(false);

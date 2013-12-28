@@ -46,16 +46,23 @@ namespace CourseProject.EFData.DBContext.Initializers
             context.Currencies.Add(byr);
             context.Currencies.Add(usd);
 
-            var sber = new OptionDeposit { Name = "Сберегательный", Percent = 3 };
-            var orig = new OptionDeposit { Name = "Оригинальный", Percent = 5 };
-            var money = new OptionDeposit { Name = "Денежный", Percent = 9 };
+            //var sber = new OptionDeposit { Name = "Сберегательный", Percent = 3 };
+            //var orig = new OptionDeposit { Name = "Оригинальный", Percent = 5 };
+            //var money = new OptionDeposit { Name = "Денежный", Percent = 9 };
+
+            var sber = new OptionDeposit { Name = "Saving", Percent = 3 };
+            var orig = new OptionDeposit { Name = "Original", Percent = 5 };
+            var money = new OptionDeposit { Name = "Monetary", Percent = 9 };
 
             context.OptionDeposits.Add(sber);
             context.OptionDeposits.Add(orig);
             context.OptionDeposits.Add(money);
 
-            var beforeSalary = new OptionLoan { Name = "До зарплаты", Percent = 1 };
-            var loan = new OptionLoan { Name = "Займ под проценты", Percent = 4 };
+            //var beforeSalary = new OptionLoan { Name = "До зарплаты", Percent = 1 };
+            //var loan = new OptionLoan { Name = "Займ под проценты", Percent = 4 };
+
+            var beforeSalary = new OptionLoan { Name = "Before salary", Percent = 1 };
+            var loan = new OptionLoan { Name = "Loan at interest", Percent = 4 };
 
             context.OptionLoans.Add(beforeSalary);
             context.OptionLoans.Add(loan);

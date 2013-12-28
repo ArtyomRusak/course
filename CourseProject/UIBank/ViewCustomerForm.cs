@@ -19,17 +19,18 @@ namespace UIBank
     {
         private Customer _customer;
         private readonly int _customerId;
+        private readonly BankContext _context;
 
         public ViewCustomerForm(int customerId)
         {
             InitializeComponent();
             _customerId = customerId;
+            _context = new BankContext(Resources.ConnectionString);
         }
 
         private void ViewCustomerForm_Load(object sender, EventArgs e)
         {
-            BankContext context = new BankContext(Resources.ConnectionString);
-            UnitOfWork unitOfWork = new UnitOfWork(context);
+            var unitOfWork = new UnitOfWork(_context);
             var accountService = new AccountService(unitOfWork, unitOfWork);
             var loanService = new LoanService(unitOfWork, unitOfWork);
             var depositService = new DepositService(unitOfWork, unitOfWork);
@@ -50,28 +51,41 @@ namespace UIBank
             _dgvDeposits.DataSource = deposits;
             _dgvLoans.DataSource = loans;
 
-            unitOfWork.Dispose();
+            unitOfWork.Commit();
         }
 
         private void _btnAddAccount_Click(object sender, EventArgs e)
         {
-            AddAccountForm form = new AddAccountForm(_customer.PassportData);
+            var form = new AddAccountForm(_customer.PassportData);
             form.ShowDialog();
-            this.ViewCustomerForm_Load(null, null);
+            ViewCustomerForm_Load(null, null);
         }
 
         private void _btnAddLoan_Click(object sender, EventArgs e)
         {
-            AddLoanForm form = new AddLoanForm(_customer.PassportData);
+            var form = new AddLoanForm(_customer.PassportData);
             form.ShowDialog();
-            this.ViewCustomerForm_Load(null, null);
+            ViewCustomerForm_Load(null, null);
         }
 
         private void _btnAddDeposit_Click(object sender, EventArgs e)
         {
-            AddDepositForm form = new AddDepositForm(_customer.PassportData);
+            var form = new AddDepositForm(_customer.PassportData);
             form.ShowDialog();
-            this.ViewCustomerForm_Load(null, null);
+            ViewCustomerForm_Load(null, null);
         }
+
+        private void _dgvAccounts_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var accountId = int.Parse(_dgvAccounts[0, e.RowIndex].Value.ToString());
+            var form = new EditAccountForm(accountId);
+            form.ShowDialog();
+            ViewCustomerForm_Load(null, null);
+        }
+
+        private void ViewCustomerForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            _context.Dispose();
+        }   
     }
 }

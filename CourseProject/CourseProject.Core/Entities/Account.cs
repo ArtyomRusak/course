@@ -9,7 +9,7 @@ namespace CourseProject.Core.Entities
         public double Summary { get; set; }
         public virtual Customer Customer { get; set; }
         public int CustomerId { get; set; }
-        public Currency Currency { get; set; }
+        public virtual Currency Currency { get; set; }
         public int CurrencyId { get; set; }
 
         public void NullAccount()

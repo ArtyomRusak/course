@@ -34,6 +34,7 @@ namespace UIBank
             InitializeComponent();
             _context = new BankContext(Resources.ConnectionString);
             _unitOfWork = new UnitOfWork(_context);
+            _currencyService = new CurrencyService(_unitOfWork, _unitOfWork);
             _tbxPassportData.Text = passportData;
             _tbxPassportData.ReadOnly = true;
         }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using CourseProject.Core;
 using CourseProject.Core.Entities;
+using CourseProject.Core.Exceptions;
 using CourseProject.Infrastructure.Guard.Validation;
 using CourseProject.Services.Exceptions;
 
@@ -79,6 +80,31 @@ namespace CourseProject.Services.Services
             var accountRepository = _factoryOfRepositories.GetAccountRepository();
             accountRepository.Remove(account);
         }
+
+        public Account GetAccountById(int accountId)
+        {
+            var accountRepository = _factoryOfRepositories.GetAccountRepository();
+            try
+            {
+                return accountRepository.GetEntityById(accountId);
+            }
+            catch (RepositoryException e)
+            {
+                throw new AccountServiceException(e.Message);
+            }
+        }
+
+        public List<Account> GetAccountsByPassportData(string passportData)
+        {
+            var accountRepository = _factoryOfRepositories.GetAccountRepository();
+            return accountRepository.Filter(e => e.Customer.PassportData == passportData).ToList();
+        }
+
+        public List<Account> GetAccountByCustomerSurname(string surname)
+        {
+            var accountRepository = _factoryOfRepositories.GetAccountRepository();
+            return accountRepository.Filter(e => e.Customer.Surname.Contains(surname)).ToList();
+        } 
 
         public List<Account> GetAccountsByCustomerId(int customerId)
         {

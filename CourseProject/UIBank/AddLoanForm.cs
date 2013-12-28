@@ -15,7 +15,7 @@ namespace UIBank
 {
     public partial class AddLoanForm : Form
     {
-        private BankContext _context;
+        private readonly BankContext _context;
         private readonly UnitOfWork _unitOfWork;
 
         public AddLoanForm()
@@ -62,14 +62,24 @@ namespace UIBank
             var customer = membershipService.GetCustomerByPassportData(_tbxPassportData.Text);
             if (customer == null)
             {
-                AddCustomerForm form = new AddCustomerForm();
+                AddCustomerForm form = new AddCustomerForm(_tbxPassportData.Text);
                 form.ShowDialog();
                 customer = membershipService.GetCustomerByPassportData(_tbxPassportData.Text);
+                if (customer == null)
+                {
+                    MessageBox.Show("Try one more time!");
+                    return;
+                }
             }
 
             loanService.CreateLoan((double)_nudSummary.Value, customer.Id, currency.Id, optionLoan.Id);
-            _unitOfWork.Dispose();
+            _unitOfWork.Commit();
             this.Close();
+        }
+
+        private void AddLoanForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            _context.Dispose();
         }
     }
 }
