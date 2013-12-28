@@ -247,6 +247,7 @@ namespace UIBank
                 _account.Summary = 0;
                 accountService.UpdateAccount(_account);
                 unitOfWork.Commit();
+                _tbxSummary.Text = "0";
                 MessageBox.Show("Done!");
                 return;
             }

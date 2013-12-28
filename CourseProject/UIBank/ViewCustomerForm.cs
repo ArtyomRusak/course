@@ -94,6 +94,7 @@ namespace UIBank
             var loanId = int.Parse(_dgvLoans[0, e.RowIndex].Value.ToString());
             var form = new ViewLoanForm(loanId);
             form.ShowDialog();
+            ViewCustomerForm_Load(null, null);
         }
 
         private void _dgvDeposits_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -101,6 +102,7 @@ namespace UIBank
             var depositId = int.Parse(_dgvDeposits[0, e.RowIndex].Value.ToString());
             var form = new ViewDepositForm(depositId);
             form.ShowDialog();
+            ViewCustomerForm_Load(null, null);
         }
 
         private void _btnDeleteCustomer_Click(object sender, EventArgs e)

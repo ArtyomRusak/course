@@ -61,7 +61,7 @@
             // 
             this._lblAccountId.AutoSize = true;
             this._lblAccountId.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this._lblAccountId.Location = new System.Drawing.Point(348, 9);
+            this._lblAccountId.Location = new System.Drawing.Point(187, 9);
             this._lblAccountId.Name = "_lblAccountId";
             this._lblAccountId.Size = new System.Drawing.Size(27, 24);
             this._lblAccountId.TabIndex = 5;
