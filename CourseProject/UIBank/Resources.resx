@@ -141,4 +141,7 @@
   <data name="TransactionRollback" xml:space="preserve">
     <value>Exception occured. Transaction is rolled back.</value>
   </data>
+  <data name="ConnectionStringNotebook" xml:space="preserve">
+    <value>BankConnectionStringNotebook</value>
+  </data>
 </root>

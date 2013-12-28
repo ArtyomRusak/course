@@ -70,6 +70,15 @@ namespace UIBank {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to BankConnectionStringNotebook.
+        /// </summary>
+        internal static string ConnectionStringNotebook {
+            get {
+                return ResourceManager.GetString("ConnectionStringNotebook", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Customer is successfully added..
         /// </summary>
         internal static string CustomerAdded {
