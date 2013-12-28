@@ -35,7 +35,7 @@ namespace UIBank
             var accountService = new AccountService(unitOfWork, unitOfWork);
             _account = accountService.GetAccountById(_accountId);
             _tbxSummary.Text = _account.Summary.ToString();
-            _lblAccountId.Text = String.Format("Customer - {0}. ID of this account - {0}",
+            _lblAccountId.Text = String.Format("Customer - {0}. ID of this account - {1}",
                 String.Format("{0} {1} {2}", _account.Customer.Surname, _account.Customer.Name,
                     _account.Customer.Patronymic), _account.Id);
             _cbxSelect.SelectedIndex = 0;

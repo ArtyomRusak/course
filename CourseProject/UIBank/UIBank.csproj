@@ -101,6 +101,18 @@
     <Compile Include="ViewCustomerForm.Designer.cs">
       <DependentUpon>ViewCustomerForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewDepositForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewDepositForm.Designer.cs">
+      <DependentUpon>ViewDepositForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewLoanForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewLoanForm.Designer.cs">
+      <DependentUpon>ViewLoanForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AddAccountForm.resx">
       <DependentUpon>AddAccountForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -126,6 +138,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ViewCustomerForm.resx">
       <DependentUpon>ViewCustomerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewDepositForm.resx">
+      <DependentUpon>ViewDepositForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewLoanForm.resx">
+      <DependentUpon>ViewLoanForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\CourseProject.Core.Entities.Account.datasource" />

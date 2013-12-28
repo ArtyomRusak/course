@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using CourseProject.Core;
 using CourseProject.Core.Entities;
+using CourseProject.Core.Exceptions;
 using CourseProject.Infrastructure.Guard.Validation;
 using CourseProject.Services.Exceptions;
 
@@ -76,6 +77,19 @@ namespace CourseProject.Services.Services
             }
         }
 
+        public Deposit GetDepositById(int depositId)
+        {
+            var depositRepository = _factoryOfRepositories.GetDepositRepository();
+            try
+            {
+                return depositRepository.GetEntityById(depositId);
+            }
+            catch (RepositoryException ex)
+            {
+                throw new DepositServiceException(ex.Message);
+            }
+        }
+
         public void RemoveDeposit(Deposit deposit)
         {
             var depositRepository = _factoryOfRepositories.GetDepositRepository();
@@ -92,6 +106,12 @@ namespace CourseProject.Services.Services
         {
             var depositRepository = _factoryOfRepositories.GetDepositRepository();
             return depositRepository.All().Count();
+        }
+
+        public IQueryable<Deposit> GetAllDeposits()
+        {
+            var depositRepository = _factoryOfRepositories.GetDepositRepository();
+            return depositRepository.All();
         }
 
         #endregion

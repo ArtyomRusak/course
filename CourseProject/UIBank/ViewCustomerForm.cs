@@ -11,6 +11,7 @@ using System.Windows.Forms.VisualStyles;
 using CourseProject.Core.Entities;
 using CourseProject.EFData;
 using CourseProject.EFData.DBContext;
+using CourseProject.Services.Exceptions;
 using CourseProject.Services.Services;
 
 namespace UIBank
@@ -86,6 +87,40 @@ namespace UIBank
         private void ViewCustomerForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             _context.Dispose();
-        }   
+        }
+
+        private void _dgvLoans_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var loanId = int.Parse(_dgvLoans[0, e.RowIndex].Value.ToString());
+            var form = new ViewLoanForm(loanId);
+            form.ShowDialog();
+        }
+
+        private void _dgvDeposits_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var depositId = int.Parse(_dgvDeposits[0, e.RowIndex].Value.ToString());
+            var form = new ViewDepositForm(depositId);
+            form.ShowDialog();
+        }
+
+        private void _btnDeleteCustomer_Click(object sender, EventArgs e)
+        {
+            var unitOfWork = new UnitOfWork(_context);
+            var membershipService = new MembershipService(unitOfWork, unitOfWork);
+            var customer = membershipService.GetCustomerById(_customer.Id);
+            try
+            {
+                membershipService.RemoveCustomer(customer);
+                unitOfWork.Commit();
+                MessageBox.Show("Customer deleted!");
+                Close();
+            }
+            catch (MembershipServiceException membershipServiceException)
+            {
+                MessageBox.Show(membershipServiceException.Message);
+                unitOfWork.Rollback();
+                return;
+            }
+        }
     }
 }

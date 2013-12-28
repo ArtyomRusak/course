@@ -43,6 +43,21 @@ namespace UIBank
             this._lblDeposits.Text = String.Format("Count of deposits - {0}", countOfDeposits.ToString());
             this._lblAccounts.Text = String.Format("Count of accounts - {0}", countOfAccounts.ToString());
 
+            var deposits = depositService.GetAllDeposits().ToList();
+            var loans = loanService.GetAllLoans().ToList();
+
+            foreach (var deposit in deposits)
+            {
+                deposit.Summary = deposit.OpeningSummary + deposit.Calculate(DateTime.Now);
+                depositService.UpdateDeposit(deposit);
+            }
+            foreach (var loan in loans)
+            {
+                loan.Summary = loan.OpeningSummary + loan.Calculate(DateTime.Now);
+                loanService.UpdateLoan(loan);
+            }
+
+
             _dgvCustomers.DataSource = null;
             _tbxFindCustomer.Text = "";
 

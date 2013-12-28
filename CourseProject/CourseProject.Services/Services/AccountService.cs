@@ -118,6 +118,12 @@ namespace CourseProject.Services.Services
             return accountRepository.All().Count();
         }
 
+        public IQueryable<Account> GetAllAccounts()
+        {
+            var accountRepository = _factoryOfRepositories.GetAccountRepository();
+            return accountRepository.All();
+        } 
+
         #endregion
 
     }

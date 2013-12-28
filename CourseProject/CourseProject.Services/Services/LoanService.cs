@@ -115,6 +115,12 @@ namespace CourseProject.Services.Services
             return loanRepository.All().Count();
         }
 
+        public IQueryable<Loan> GetAllLoans()
+        {
+            var loanRepository = _factoryOfRepositories.GetLoanRepository();
+            return loanRepository.All();
+        } 
+
         #endregion
 
     }
