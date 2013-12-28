@@ -15,5 +15,28 @@ namespace CourseProject.Core.Entities
         public int CurrencyId { get; set; }
         public virtual OptionDeposit OptionDeposit { get; set; }
         public int OptionDepositId { get; set; }
+
+        public double Calculate(DateTime date)
+        {
+            var count = date - CreateDate;
+            var percents = (OpeningSummary * OptionDeposit.Percent * OptionDeposit.Duration.TotalDays) / (365 * 100);
+            if (count.TotalDays > 365)
+            {
+                return percents;
+            }
+            else
+            {
+                var percentPerMonth = percents / 12;
+                var percent = percents / 12 * (count.TotalDays / 30);
+                if (percent > percentPerMonth)
+                {
+                    return percent;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
     }
 }
