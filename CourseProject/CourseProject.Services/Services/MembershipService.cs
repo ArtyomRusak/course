@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using CourseProject.Core;
 using CourseProject.Core.Entities;
+using CourseProject.Core.Exceptions;
 using CourseProject.Infrastructure.Guard.Validation;
 using CourseProject.Services.Exceptions;
 
@@ -10,15 +11,8 @@ namespace CourseProject.Services.Services
 {
     public class MembershipService : IService
     {
-        #region [Private members]
-
         private readonly IUnitOfWork _unitOfWork;
         private readonly IRepositoryFactory _factoryOfRepositories;
-
-        #endregion
-
-
-        #region [Ctor's]
 
         public MembershipService(IUnitOfWork unitOfWork, IRepositoryFactory factoryOfRepositories)
         {
@@ -29,15 +23,10 @@ namespace CourseProject.Services.Services
             _factoryOfRepositories = factoryOfRepositories;
         }
 
-        #endregion
-
-
-        #region [MembershipService's members]
-
         public Customer CreateCustomer(string name, string surname, string patronymic, string passportData,
             string address, DateTime birthDate)
         {
-            var customer = new Customer()
+            var customer = new Customer
             {
                 Name = name,
                 Surname = surname,
@@ -66,12 +55,14 @@ namespace CourseProject.Services.Services
         public Customer GetCustomerByPassportData(string passportData)
         {
             var customerRepository = _factoryOfRepositories.GetCustomerRepository();
-            var customer = customerRepository.Find(e => e.PassportData == passportData);
-            //if (customer == null)
-            //{
-            //    throw new MembershipServiceException("Customer doesn't exist.");
-            //}
-            return customer;
+            try
+            {
+                return customerRepository.Find(e => e.PassportData == passportData);
+            }
+            catch (RepositoryException e)
+            {
+                throw new MembershipServiceException(e.Message);
+            }
         }
 
         public List<Customer> GetCustomersBySurname(string surname)
@@ -122,8 +113,5 @@ namespace CourseProject.Services.Services
             var customerRepository = _factoryOfRepositories.GetCustomerRepository();
             return customerRepository.All().Count();
         }
-
-        #endregion
-
     }
 }

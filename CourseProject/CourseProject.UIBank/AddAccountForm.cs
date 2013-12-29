@@ -52,14 +52,14 @@ namespace CourseProject.UIBank
             var customer = membershipService.GetCustomerByPassportData(_tbxPassportData.Text);
             if (customer == null)
             {
-                AddCustomerForm form = new AddCustomerForm(_tbxPassportData.Text);
+                var form = new AddCustomerForm(_tbxPassportData.Text);
                 form.ShowDialog();
                 customer = membershipService.GetCustomerByPassportData(_tbxPassportData.Text);
             }
 
             accountService.CreateAccount((double) _nudSummary.Value, customer.Id, currency.Id);
             _unitOfWork.Dispose();
-            this.Close();
+            Close();
         }
 
         private void AddAccountForm_FormClosing(object sender, FormClosingEventArgs e)

@@ -10,15 +10,8 @@ namespace CourseProject.Services.Services
 {
     public class LoanService : IService
     {
-        #region [Private members]
-
         private readonly IUnitOfWork _unitOfWork;
         private readonly IRepositoryFactory _factoryOfRepositories;
-
-        #endregion
-
-
-        #region [Ctor's]
 
         public LoanService(IUnitOfWork unitOfWork, IRepositoryFactory factoryOfRepositories)
         {
@@ -28,11 +21,6 @@ namespace CourseProject.Services.Services
             _unitOfWork = unitOfWork;
             _factoryOfRepositories = factoryOfRepositories;
         }
-
-        #endregion
-
-
-        #region [LoanService's members]
 
         public Loan CreateLoan(double startSummary, int customerId, int currencyId, int optionLoanId)
         {
@@ -119,9 +107,6 @@ namespace CourseProject.Services.Services
         {
             var loanRepository = _factoryOfRepositories.GetLoanRepository();
             return loanRepository.All();
-        } 
-
-        #endregion
-
+        }
     }
 }

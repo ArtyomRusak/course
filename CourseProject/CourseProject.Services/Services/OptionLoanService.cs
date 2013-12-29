@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using CourseProject.Core;
 using CourseProject.Core.Entities;
 using CourseProject.Core.Exceptions;
@@ -13,15 +10,8 @@ namespace CourseProject.Services.Services
 {
     public class OptionLoanService : IService
     {
-        #region [Private members]
-
         private readonly IUnitOfWork _unitOfWork;
         private readonly IRepositoryFactory _factoryOfRepositories;
-
-        #endregion
-
-
-        #region [Ctor's]
 
         public OptionLoanService(IUnitOfWork unitOfWork, IRepositoryFactory factoryOfRepositories)
         {
@@ -31,8 +21,6 @@ namespace CourseProject.Services.Services
             _unitOfWork = unitOfWork;
             _factoryOfRepositories = factoryOfRepositories;
         }
-
-        #endregion
 
         public List<OptionLoan> GetOptionLoans()
         {

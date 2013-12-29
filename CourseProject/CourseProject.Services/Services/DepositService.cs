@@ -11,15 +11,8 @@ namespace CourseProject.Services.Services
 {
     public class DepositService : IService
     {
-        #region [Private members]
-
         private readonly IUnitOfWork _unitOfWork;
         private readonly IRepositoryFactory _factoryOfRepositories;
-
-        #endregion
-
-
-        #region [Ctor's]
 
         public DepositService(IUnitOfWork unitOfWork, IRepositoryFactory factoryOfRepositories)
         {
@@ -29,11 +22,6 @@ namespace CourseProject.Services.Services
             _unitOfWork = unitOfWork;
             _factoryOfRepositories = factoryOfRepositories;
         }
-
-        #endregion
-
-
-        #region [DepositService's members]
 
         public Deposit CreateDeposit(double startSummary, int customerId, int currencyId, int optionDepositId)
         {
@@ -113,8 +101,5 @@ namespace CourseProject.Services.Services
             var depositRepository = _factoryOfRepositories.GetDepositRepository();
             return depositRepository.All();
         }
-
-        #endregion
-
     }
 }
