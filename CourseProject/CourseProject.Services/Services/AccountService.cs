@@ -11,15 +11,8 @@ namespace CourseProject.Services.Services
 {
     public class AccountService : IService
     {
-        #region [Private members]
-
         private readonly IUnitOfWork _unitOfWork;
         private readonly IRepositoryFactory _factoryOfRepositories;
-
-        #endregion
-
-
-        #region [Ctor's]
 
         public AccountService(IUnitOfWork unitOfWork, IRepositoryFactory factoryOfRepositories)
         {
@@ -29,11 +22,6 @@ namespace CourseProject.Services.Services
             _unitOfWork = unitOfWork;
             _factoryOfRepositories = factoryOfRepositories;
         }
-
-        #endregion
-
-
-        #region [AccountService's members]
 
         public Account CreateAccount(double summary, int customerId, int currencyId)
         {
@@ -122,9 +110,6 @@ namespace CourseProject.Services.Services
         {
             var accountRepository = _factoryOfRepositories.GetAccountRepository();
             return accountRepository.All();
-        } 
-
-        #endregion
-
+        }
     }
 }
