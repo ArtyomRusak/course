@@ -1,4 +1,4 @@
-﻿namespace UIBank
+﻿namespace CourseProject.UIBank
 {
     partial class AddAccountForm
     {
@@ -124,7 +124,7 @@
             this.Controls.Add(this._tbxPassportData);
             this.Controls.Add(this._lblPassportData);
             this.Name = "AddAccountForm";
-            this.Text = "AddAccountForm";
+            this.Text = "Adding account";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AddAccountForm_FormClosing);
             this.Load += new System.EventHandler(this.AddAccountForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this._nudSummary)).EndInit();

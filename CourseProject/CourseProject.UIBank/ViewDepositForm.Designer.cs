@@ -1,4 +1,4 @@
-﻿namespace UIBank
+﻿namespace CourseProject.UIBank
 {
     partial class ViewDepositForm
     {
@@ -105,7 +105,7 @@
             this.Controls.Add(this._lblSummary);
             this.Controls.Add(this._lblDepositId);
             this.Name = "ViewDepositForm";
-            this.Text = "ViewDepositForm";
+            this.Text = "Deposit";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ViewDepositForm_FormClosing);
             this.Load += new System.EventHandler(this.ViewDepositForm_Load);
             this.ResumeLayout(false);

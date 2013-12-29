@@ -7,8 +7,8 @@
     <ProjectGuid>{D66279B1-5CFF-4BA5-A991-6A2743278A58}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>UIBank</RootNamespace>
-    <AssemblyName>UIBank</AssemblyName>
+    <RootNamespace>CourseProject.UIBank</RootNamespace>
+    <AssemblyName>CourseProject.UIBank</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

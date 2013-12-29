@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using CourseProject.Core.Entities;
 using CourseProject.EFData;
@@ -14,7 +9,7 @@ using CourseProject.Infrastructure.Guard.Validation;
 using CourseProject.Services.Exceptions;
 using CourseProject.Services.Services;
 
-namespace UIBank
+namespace CourseProject.UIBank
 {
     public partial class EditAccountForm : Form
     {

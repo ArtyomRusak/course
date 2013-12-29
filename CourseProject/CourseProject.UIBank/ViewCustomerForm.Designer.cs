@@ -1,4 +1,4 @@
-﻿namespace UIBank
+﻿namespace CourseProject.UIBank
 {
     partial class ViewCustomerForm
     {
@@ -400,7 +400,7 @@
             this.Controls.Add(this._lblBirthDate);
             this.Controls.Add(this._lblFIO);
             this.Name = "ViewCustomerForm";
-            this.Text = "ViewCustomerForm";
+            this.Text = "Customer";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ViewCustomerForm_FormClosing);
             this.Load += new System.EventHandler(this.ViewCustomerForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this._dgvLoans)).EndInit();

@@ -1,4 +1,4 @@
-﻿namespace UIBank
+﻿namespace CourseProject.UIBank
 {
     partial class ViewLoanForm
     {
@@ -105,7 +105,7 @@
             this.Controls.Add(this._lblSummary);
             this.Controls.Add(this._lblLoanId);
             this.Name = "ViewLoanForm";
-            this.Text = "ViewLoanForm";
+            this.Text = "Loan";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ViewLoanForm_FormClosing);
             this.Load += new System.EventHandler(this.ViewLoanForm_Load);
             this.ResumeLayout(false);

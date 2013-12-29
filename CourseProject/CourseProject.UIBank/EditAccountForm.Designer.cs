@@ -1,4 +1,4 @@
-﻿namespace UIBank
+﻿namespace CourseProject.UIBank
 {
     partial class EditAccountForm
     {
@@ -283,7 +283,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this._lblAccountId);
             this.Name = "EditAccountForm";
-            this.Text = "EditAccountForm";
+            this.Text = "Editing account";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.EditAccountForm_FormClosing);
             this.Load += new System.EventHandler(this.EditAccountForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this._dgvAccounts)).EndInit();

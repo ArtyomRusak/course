@@ -1,18 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using CourseProject.Core.Entities;
 using CourseProject.EFData;
 using CourseProject.EFData.DBContext;
 using CourseProject.Services.Services;
 
-namespace UIBank
+namespace CourseProject.UIBank
 {
     public partial class ViewDepositForm : Form
     {
