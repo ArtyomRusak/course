@@ -222,7 +222,7 @@
             this._btnFindAccounts.Name = "_btnFindAccounts";
             this._btnFindAccounts.Size = new System.Drawing.Size(135, 37);
             this._btnFindAccounts.TabIndex = 12;
-            this._btnFindAccounts.Text = "Найти";
+            this._btnFindAccounts.Text = "Find";
             this._btnFindAccounts.UseVisualStyleBackColor = true;
             this._btnFindAccounts.Click += new System.EventHandler(this._btnFindAccounts_Click);
             // 

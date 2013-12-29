@@ -61,7 +61,7 @@
             this._btnAddAccount.Name = "_btnAddAccount";
             this._btnAddAccount.Size = new System.Drawing.Size(161, 54);
             this._btnAddAccount.TabIndex = 0;
-            this._btnAddAccount.Text = "Добавить счёт";
+            this._btnAddAccount.Text = "Add account";
             this._btnAddAccount.UseVisualStyleBackColor = true;
             this._btnAddAccount.Click += new System.EventHandler(this._btnAddAccount_Click);
             // 
@@ -72,7 +72,7 @@
             this._btnAddDeposit.Name = "_btnAddDeposit";
             this._btnAddDeposit.Size = new System.Drawing.Size(161, 54);
             this._btnAddDeposit.TabIndex = 1;
-            this._btnAddDeposit.Text = "Добавить вклад";
+            this._btnAddDeposit.Text = "Add deposit";
             this._btnAddDeposit.UseVisualStyleBackColor = true;
             this._btnAddDeposit.Click += new System.EventHandler(this._btnAddDeposit_Click);
             // 
@@ -83,7 +83,7 @@
             this._btnAddLoan.Name = "_btnAddLoan";
             this._btnAddLoan.Size = new System.Drawing.Size(161, 54);
             this._btnAddLoan.TabIndex = 2;
-            this._btnAddLoan.Text = "Сделать займ";
+            this._btnAddLoan.Text = "Add loan";
             this._btnAddLoan.UseVisualStyleBackColor = true;
             this._btnAddLoan.Click += new System.EventHandler(this._btnAddLoan_Click);
             // 
@@ -94,7 +94,7 @@
             this._btnAddCustomer.Name = "_btnAddCustomer";
             this._btnAddCustomer.Size = new System.Drawing.Size(161, 54);
             this._btnAddCustomer.TabIndex = 3;
-            this._btnAddCustomer.Text = "Добавить пользователя";
+            this._btnAddCustomer.Text = "Add customer";
             this._btnAddCustomer.UseVisualStyleBackColor = true;
             this._btnAddCustomer.Click += new System.EventHandler(this._btnAddCustomer_Click);
             // 
@@ -141,7 +141,7 @@
             this._btnFindCustomer.Name = "_btnFindCustomer";
             this._btnFindCustomer.Size = new System.Drawing.Size(135, 37);
             this._btnFindCustomer.TabIndex = 8;
-            this._btnFindCustomer.Text = "Найти";
+            this._btnFindCustomer.Text = "Find";
             this._btnFindCustomer.UseVisualStyleBackColor = true;
             this._btnFindCustomer.Click += new System.EventHandler(this.@__findCustomer_Click);
             // 

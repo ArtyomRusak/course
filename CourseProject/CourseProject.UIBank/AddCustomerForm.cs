@@ -3,6 +3,7 @@ using System.Linq;
 using System.Windows.Forms;
 using CourseProject.EFData;
 using CourseProject.EFData.DBContext;
+using CourseProject.Services.Exceptions;
 using CourseProject.Services.Services;
 
 namespace CourseProject.UIBank
@@ -52,9 +53,10 @@ namespace CourseProject.UIBank
                 MessageBox.Show(Resources.CustomerAdded);
                 this.Close();
             }
-            catch (Exception ex)
+            catch (ServiceException ex)
             {
-                MessageBox.Show(ex.Message);
+                unitOfWork.Rollback();
+                MessageBox.Show("There is a customer with those passport data.");
                 return;
             }
         }
