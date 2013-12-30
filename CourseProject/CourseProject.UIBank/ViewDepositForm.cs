@@ -29,6 +29,10 @@ namespace CourseProject.UIBank
                 String.Format("{0} {1} {2}", _deposit.Customer.Surname, _deposit.Customer.Name,
                     _deposit.Customer.Patronymic), _deposit.Id);
             _tbxSummary.Text = _deposit.Summary.ToString();
+            _lblCreateDate.Text = String.Format("Create date - {0}", _deposit.CreateDate);
+            _lblOptionDeposit.Text = String.Format("Deposit name - {0}, Percent - {1}, Duration - {2}, {3}",
+                _deposit.OptionDeposit.Name, _deposit.OptionDeposit.Percent, _deposit.OptionDeposit.DurationInMonth,
+                _deposit.Currency.Value);
 
             unitOfWork.Commit();
         }
@@ -48,7 +52,7 @@ namespace CourseProject.UIBank
             }
 
             var percent = _deposit.Calculate(date);
-            _tbxPercent.Text = percent.ToString();
+            _tbxPercent.Text = Math.Round(percent, 2).ToString();
         }
     }
 }

@@ -61,7 +61,7 @@ namespace CourseProject.UIBank {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to BankConnectionString.
+        ///   Looks up a localized string similar to BankConnectionStringNotebook.
         /// </summary>
         internal static string ConnectionString {
             get {

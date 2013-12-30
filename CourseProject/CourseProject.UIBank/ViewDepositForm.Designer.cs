@@ -34,6 +34,8 @@
             this._btnCalculate = new System.Windows.Forms.Button();
             this._tbxPercent = new System.Windows.Forms.TextBox();
             this._dtmpDate = new System.Windows.Forms.DateTimePicker();
+            this._lblCreateDate = new System.Windows.Forms.Label();
+            this._lblOptionDeposit = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // _lblDepositId
@@ -68,7 +70,7 @@
             // _btnCalculate
             // 
             this._btnCalculate.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this._btnCalculate.Location = new System.Drawing.Point(339, 113);
+            this._btnCalculate.Location = new System.Drawing.Point(340, 101);
             this._btnCalculate.Name = "_btnCalculate";
             this._btnCalculate.Size = new System.Drawing.Size(131, 41);
             this._btnCalculate.TabIndex = 18;
@@ -79,7 +81,7 @@
             // _tbxPercent
             // 
             this._tbxPercent.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this._tbxPercent.Location = new System.Drawing.Point(326, 178);
+            this._tbxPercent.Location = new System.Drawing.Point(326, 157);
             this._tbxPercent.Name = "_tbxPercent";
             this._tbxPercent.ReadOnly = true;
             this._tbxPercent.Size = new System.Drawing.Size(158, 29);
@@ -93,11 +95,33 @@
             this._dtmpDate.Size = new System.Drawing.Size(200, 20);
             this._dtmpDate.TabIndex = 20;
             // 
+            // _lblCreateDate
+            // 
+            this._lblCreateDate.AutoSize = true;
+            this._lblCreateDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this._lblCreateDate.Location = new System.Drawing.Point(32, 148);
+            this._lblCreateDate.Name = "_lblCreateDate";
+            this._lblCreateDate.Size = new System.Drawing.Size(92, 20);
+            this._lblCreateDate.TabIndex = 21;
+            this._lblCreateDate.Text = "CreateDate";
+            // 
+            // _lblOptionDeposit
+            // 
+            this._lblOptionDeposit.AutoSize = true;
+            this._lblOptionDeposit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this._lblOptionDeposit.Location = new System.Drawing.Point(32, 187);
+            this._lblOptionDeposit.Name = "_lblOptionDeposit";
+            this._lblOptionDeposit.Size = new System.Drawing.Size(92, 20);
+            this._lblOptionDeposit.TabIndex = 22;
+            this._lblOptionDeposit.Text = "CreateDate";
+            // 
             // ViewDepositForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(563, 237);
+            this.Controls.Add(this._lblOptionDeposit);
+            this.Controls.Add(this._lblCreateDate);
             this.Controls.Add(this._dtmpDate);
             this.Controls.Add(this._tbxPercent);
             this.Controls.Add(this._btnCalculate);
@@ -121,5 +145,7 @@
         private System.Windows.Forms.Button _btnCalculate;
         private System.Windows.Forms.TextBox _tbxPercent;
         private System.Windows.Forms.DateTimePicker _dtmpDate;
+        private System.Windows.Forms.Label _lblCreateDate;
+        private System.Windows.Forms.Label _lblOptionDeposit;
     }
 }

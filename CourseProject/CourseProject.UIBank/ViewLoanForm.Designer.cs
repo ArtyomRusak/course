@@ -34,6 +34,8 @@
             this._tbxSummary = new System.Windows.Forms.TextBox();
             this._lblSummary = new System.Windows.Forms.Label();
             this._lblLoanId = new System.Windows.Forms.Label();
+            this._lblOptionLoan = new System.Windows.Forms.Label();
+            this._lblCreateDate = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // _dtmpDate
@@ -47,7 +49,7 @@
             // _tbxPercent
             // 
             this._tbxPercent.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this._tbxPercent.Location = new System.Drawing.Point(302, 195);
+            this._tbxPercent.Location = new System.Drawing.Point(304, 159);
             this._tbxPercent.Name = "_tbxPercent";
             this._tbxPercent.ReadOnly = true;
             this._tbxPercent.Size = new System.Drawing.Size(158, 29);
@@ -56,7 +58,7 @@
             // _btnCalculate
             // 
             this._btnCalculate.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this._btnCalculate.Location = new System.Drawing.Point(315, 118);
+            this._btnCalculate.Location = new System.Drawing.Point(316, 104);
             this._btnCalculate.Name = "_btnCalculate";
             this._btnCalculate.Size = new System.Drawing.Size(131, 41);
             this._btnCalculate.TabIndex = 24;
@@ -93,11 +95,33 @@
             this._lblLoanId.TabIndex = 21;
             this._lblLoanId.Text = "ID";
             // 
+            // _lblOptionLoan
+            // 
+            this._lblOptionLoan.AutoSize = true;
+            this._lblOptionLoan.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this._lblOptionLoan.Location = new System.Drawing.Point(37, 201);
+            this._lblOptionLoan.Name = "_lblOptionLoan";
+            this._lblOptionLoan.Size = new System.Drawing.Size(76, 20);
+            this._lblOptionLoan.TabIndex = 27;
+            this._lblOptionLoan.Text = "Summary";
+            // 
+            // _lblCreateDate
+            // 
+            this._lblCreateDate.AutoSize = true;
+            this._lblCreateDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this._lblCreateDate.Location = new System.Drawing.Point(37, 159);
+            this._lblCreateDate.Name = "_lblCreateDate";
+            this._lblCreateDate.Size = new System.Drawing.Size(76, 20);
+            this._lblCreateDate.TabIndex = 28;
+            this._lblCreateDate.Text = "Summary";
+            // 
             // ViewLoanForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(528, 250);
+            this.Controls.Add(this._lblCreateDate);
+            this.Controls.Add(this._lblOptionLoan);
             this.Controls.Add(this._dtmpDate);
             this.Controls.Add(this._tbxPercent);
             this.Controls.Add(this._btnCalculate);
@@ -121,5 +145,7 @@
         private System.Windows.Forms.TextBox _tbxSummary;
         private System.Windows.Forms.Label _lblSummary;
         private System.Windows.Forms.Label _lblLoanId;
+        private System.Windows.Forms.Label _lblOptionLoan;
+        private System.Windows.Forms.Label _lblCreateDate;
     }
 }

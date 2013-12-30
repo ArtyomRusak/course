@@ -62,14 +62,16 @@ namespace CourseProject.UIBank
 
         private void __findCustomer_Click(object sender, EventArgs e)
         {
-            if (_tbxFindCustomer.Text == "")
-            {
-                MessageBox.Show(Resources.FindCustomerError);
-                return;
-            }
-
             var unitOfWork = new UnitOfWork(_context);
             var membershipService = new MembershipService(unitOfWork, unitOfWork);
+
+            if (_tbxFindCustomer.Text == "")
+            {
+                var data = membershipService.GetAllCustomers();
+                _dgvCustomers.DataSource = data;
+                unitOfWork.Commit();
+                return;
+            }
 
             switch (_cbxSelect.SelectedIndex)
             {

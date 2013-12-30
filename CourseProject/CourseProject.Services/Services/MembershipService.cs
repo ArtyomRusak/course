@@ -76,7 +76,7 @@ namespace CourseProject.Services.Services
             {
                 throw new MembershipServiceException(e.Message);
             }
-        } 
+        }
 
         public Customer GetCustomerById(int userId)
         {
@@ -112,6 +112,12 @@ namespace CourseProject.Services.Services
         {
             var customerRepository = _factoryOfRepositories.GetCustomerRepository();
             return customerRepository.All().Count();
+        }
+
+        public List<Customer> GetAllCustomers()
+        {
+            var customerRepository = _factoryOfRepositories.GetCustomerRepository();
+            return customerRepository.All().ToList();
         }
     }
 }

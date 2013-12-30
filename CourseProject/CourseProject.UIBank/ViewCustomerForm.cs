@@ -12,7 +12,7 @@ namespace CourseProject.UIBank
     {
         private Customer _customer;
         private readonly int _customerId;
-        private readonly BankContext _context;
+        private BankContext _context;
 
         public ViewCustomerForm(int customerId)
         {
@@ -23,6 +23,11 @@ namespace CourseProject.UIBank
 
         private void ViewCustomerForm_Load(object sender, EventArgs e)
         {
+            if (_context != null)
+            {
+                _context.Dispose();
+                _context = new BankContext(Resources.ConnectionString);
+            }
             var unitOfWork = new UnitOfWork(_context);
             var accountService = new AccountService(unitOfWork, unitOfWork);
             var loanService = new LoanService(unitOfWork, unitOfWork);
