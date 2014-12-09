@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this._lblName = new System.Windows.Forms.Label();
             this._lblSurname = new System.Windows.Forms.Label();
             this._lblPatronymic = new System.Windows.Forms.Label();
@@ -41,6 +42,8 @@
             this._lblPassportData = new System.Windows.Forms.Label();
             this._tbxPassportData = new System.Windows.Forms.TextBox();
             this._btnAddCustomer = new System.Windows.Forms.Button();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // _lblName
@@ -80,6 +83,7 @@
             this._tbxName.Name = "_tbxName";
             this._tbxName.Size = new System.Drawing.Size(125, 22);
             this._tbxName.TabIndex = 3;
+            this._tbxName.Validating += new System.ComponentModel.CancelEventHandler(this._tbxName_Validating);
             // 
             // _tbxSurname
             // 
@@ -88,6 +92,7 @@
             this._tbxSurname.Name = "_tbxSurname";
             this._tbxSurname.Size = new System.Drawing.Size(125, 22);
             this._tbxSurname.TabIndex = 4;
+            this._tbxSurname.Validating += new System.ComponentModel.CancelEventHandler(this._tbxSurname_Validating);
             // 
             // _tbxPatronymic
             // 
@@ -96,6 +101,7 @@
             this._tbxPatronymic.Name = "_tbxPatronymic";
             this._tbxPatronymic.Size = new System.Drawing.Size(125, 22);
             this._tbxPatronymic.TabIndex = 5;
+            this._tbxPatronymic.Validating += new System.ComponentModel.CancelEventHandler(this._tbxPatronymic_Validating);
             // 
             // _lblBirthDate
             // 
@@ -125,6 +131,7 @@
             this._tbxAddress.Name = "_tbxAddress";
             this._tbxAddress.Size = new System.Drawing.Size(196, 69);
             this._tbxAddress.TabIndex = 9;
+            this._tbxAddress.Validating += new System.ComponentModel.CancelEventHandler(this._tbxAddress_Validating);
             // 
             // _dtmpBirthDate
             // 
@@ -132,6 +139,7 @@
             this._dtmpBirthDate.Name = "_dtmpBirthDate";
             this._dtmpBirthDate.Size = new System.Drawing.Size(200, 20);
             this._dtmpBirthDate.TabIndex = 11;
+            this._dtmpBirthDate.Validating += new System.ComponentModel.CancelEventHandler(this._dtmpBirthDate_Validating);
             // 
             // _lblPassportData
             // 
@@ -150,6 +158,7 @@
             this._tbxPassportData.Name = "_tbxPassportData";
             this._tbxPassportData.Size = new System.Drawing.Size(125, 22);
             this._tbxPassportData.TabIndex = 13;
+            this._tbxPassportData.Validating += new System.ComponentModel.CancelEventHandler(this._tbxPassportData_Validating);
             // 
             // _btnAddCustomer
             // 
@@ -160,6 +169,10 @@
             this._btnAddCustomer.Text = "Add customer";
             this._btnAddCustomer.UseVisualStyleBackColor = true;
             this._btnAddCustomer.Click += new System.EventHandler(this._btnAddCustomer_Click);
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
             // 
             // AddCustomerForm
             // 
@@ -182,6 +195,7 @@
             this.Name = "AddCustomerForm";
             this.Text = "Adding customer";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AddCustomerForm_FormClosing);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -202,5 +216,6 @@
         private System.Windows.Forms.Label _lblPassportData;
         private System.Windows.Forms.TextBox _tbxPassportData;
         private System.Windows.Forms.Button _btnAddCustomer;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }
