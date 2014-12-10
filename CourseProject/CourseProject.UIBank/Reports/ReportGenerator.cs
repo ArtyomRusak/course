@@ -19,20 +19,69 @@ namespace CourseProject.UIBank.Reports
 
       var mainParagraph = new Paragraph(document, new Run(document, String.Format("Отчёт по счетам, депозитам, займам заказчика ({0}):", customer.FullName)));
 
-      var table = new Table(document);
+      var accountTable = new Table(document);
+      GenerateHeaders(document, accountTable);
+      var accountParagraph = new Paragraph(document, new Run(document, "Accounts"));
+      GenerateRowsForAccounts(accounts, document, accountTable);
 
-      GenerateRowsForAccounts(accounts, document, table);
+      var depositTable = new Table(document);
+      GenerateHeaders(document, depositTable);
+      var depositParagraph = new Paragraph(document, new Run(document, "Deposits"));
+      GenerateRowsForDeposits(deposits, document, depositTable);
 
-      GenerateRowsForDeposits(deposits, document, table);
+      var loanTable = new Table(document);
+      GenerateHeaders(document, loanTable);
+      var loanParagraph = new Paragraph(document, new Run(document, "Loans"));
+      GenerateRowsForLoans(loans, document, loanTable);
 
-      GenerateRowsForLoans(loans, document, table);
-
-      var mainSection = new Section(document, mainParagraph, new Paragraph(document, new SpecialCharacter(document, SpecialCharacterType.LineBreak)), table);
+      var mainSection = new Section(document, mainParagraph);
 
       document.Sections.Add(mainSection);
+      
+      mainSection.Blocks.Add(accountParagraph);
+      mainSection.Blocks.Add(accountTable);
+      mainSection.Blocks.Add(new Paragraph(document, new SpecialCharacter(document, SpecialCharacterType.LineBreak)));
+
+      mainSection.Blocks.Add(depositParagraph);
+      mainSection.Blocks.Add(depositTable);
+      mainSection.Blocks.Add(new Paragraph(document, new SpecialCharacter(document, SpecialCharacterType.LineBreak)));
+
+      mainSection.Blocks.Add(loanParagraph);
+      mainSection.Blocks.Add(loanTable);
+      mainSection.Blocks.Add(new Paragraph(document, new SpecialCharacter(document, SpecialCharacterType.LineBreak)));
 
       var path = GeneratePath(customer.FullName);
       document.Save(path);
+    }
+
+    private static void GenerateHeaders(DocumentModel document, Table table)
+    {
+      var row = new TableRow(document);
+      table.Rows.Add(row);
+
+      var cells = new List<TableCell>();
+
+      var paragraph = new Paragraph(document, String.Empty);
+      var cell = new TableCell(document, paragraph);
+      cells.Add(cell);
+
+      paragraph = new Paragraph(document, "Type");
+      cell = new TableCell(document, paragraph);
+      cells.Add(cell);
+
+      paragraph = new Paragraph(document, "Create Date");
+      cell = new TableCell(document, paragraph);
+      cells.Add(cell);
+
+      paragraph = new Paragraph(document, "Type");
+      cell = new TableCell(document, paragraph);
+      cells.Add(cell);
+
+      paragraph = new Paragraph(document, "Summary");
+      cell = new TableCell(document, paragraph);
+      cells.Add(cell);
+
+      AddCellsToRow(row, cells);
     }
 
     private static void GenerateRowsForAccounts(ICollection<Account> accounts, DocumentModel document, Table table)
