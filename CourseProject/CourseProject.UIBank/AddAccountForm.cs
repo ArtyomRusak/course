@@ -32,6 +32,7 @@ namespace CourseProject.UIBank
       _currencyService = new CurrencyService(_unitOfWork, _unitOfWork);
       _tbxPassportData.Text = passportData;
       _tbxPassportData.ReadOnly = true;
+      _validationHelper = new ValidationHelper(this.errorProvider1);
     }
 
     private void AddAccountForm_Load(object sender, EventArgs e)
@@ -43,7 +44,7 @@ namespace CourseProject.UIBank
 
     private void _btnCreate_Click(object sender, EventArgs e)
     {
-      if (this.ValidateChildren())
+      if (this.ValidateChildren() == false)
       {
         MessageBox.Show("There are validation erros on page.");
         return;
@@ -78,7 +79,7 @@ namespace CourseProject.UIBank
         return;
       }
 
-      if (_validationHelper.CheckForRegex(_tbxPassportData, "[A-Z]{2}[0-9]{7}", "Template for passport don't match. For example - MP3001232") == false)
+      if (_validationHelper.CheckForRegex(_tbxPassportData, "[A-Z]{2}[0-9]{7}$", "Template for passport don't match. For example - MP3001232") == false)
       {
         return;
       }

@@ -26,7 +26,7 @@ namespace CourseProject.UIBank.Helpers
 
         public bool CheckForRegex(TextBox textBox, string pattern, string errorMessage)
         {
-            if (Regex.IsMatch(textBox.Text, pattern))
+            if (Regex.IsMatch(textBox.Text, pattern) == false)
             {
                 _errorProvider.SetError(textBox, errorMessage);
                 return false;

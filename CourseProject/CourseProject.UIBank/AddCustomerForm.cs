@@ -36,7 +36,7 @@ namespace CourseProject.UIBank
 
         private void _btnAddCustomer_Click(object sender, EventArgs e)
         {
-            if (this.ValidateChildren())
+            if (this.ValidateChildren() == false)
             {
                 MessageBox.Show("There are validation errors on page.");
                 return;
@@ -74,7 +74,7 @@ namespace CourseProject.UIBank
             }
 
             if (
-                _validationHelper.CheckForRegex(_tbxName, "[a-zA-z]{0, 10}",
+                _validationHelper.CheckForRegex(_tbxName, "[a-zA-z]{0,10}$",
                     "Name must not contain special symbols, numbers and have length more than 10 symbols") == false)
             {
                 return;
@@ -91,7 +91,7 @@ namespace CourseProject.UIBank
             }
 
             if (
-                _validationHelper.CheckForRegex(_tbxSurname, "[a-zA-Z]{0, 40}",
+                _validationHelper.CheckForRegex(_tbxSurname, "[a-zA-Z]{0,40}$",
                     "Surname must not contain special symbols, numbers and have length more than 40 symbols") == false)
             {
                 this.errorProvider1.SetError(_tbxSurname, "Name can't have special symbols and numbers");
@@ -109,7 +109,7 @@ namespace CourseProject.UIBank
             }
 
             if (
-                _validationHelper.CheckForRegex(_tbxPatronymic, "[a-zA-Z]{0, 40}",
+                _validationHelper.CheckForRegex(_tbxPatronymic, "[a-zA-Z]{0,40}$",
                     "Patronymic must not contain special symbols, numbers and have length more than 40 symbols") ==
                 false)
             {
@@ -127,7 +127,7 @@ namespace CourseProject.UIBank
             }
 
             if (
-                _validationHelper.CheckForRegex(_tbxPassportData, "[A-Z]{2}[0-9]{7}",
+                _validationHelper.CheckForRegex(_tbxPassportData, "[A-Z]{2}[0-9]{7}$",
                     "Template for passport don't match. For example - MP3001232") == false)
             {
                 return;

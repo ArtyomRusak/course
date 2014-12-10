@@ -48,7 +48,7 @@ namespace CourseProject.UIBank
 
     private void _btnCreateDeposit_Click(object sender, EventArgs e)
     {
-      if (this.ValidateChildren())
+      if (this.ValidateChildren() == false)
       {
         MessageBox.Show("There are validation erros on page.");
         return;
@@ -91,7 +91,7 @@ namespace CourseProject.UIBank
         return;
       }
 
-      if (_validationHelper.CheckForRegex(_tbxPassportData, "[A-Z]{2}[0-9]{7}", "Template for passport don't match. For example - MP3001232") == false)
+      if (_validationHelper.CheckForRegex(_tbxPassportData, "[A-Z]{2}[0-9]{7}$", "Template for passport don't match. For example - MP3001232") == false)
       {
         return;
       }
